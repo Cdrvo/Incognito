@@ -987,7 +987,7 @@ SMODS.Joker{ -- Doctor Kidori
 
 -- SCRAP
 
-SMODS.Joker{ -- Pot of Greed
+--[[SMODS.Joker{ -- Pot of Greed
     key = "potofgreed",
     blueprint_compat = true,
     eternal_compat = true,
@@ -1015,7 +1015,7 @@ SMODS.Joker{ -- Pot of Greed
             }
         end
     end
-}
+}]]
 
 --[[SMODS.Joker{ -- Reroll Gimmick
     key = "yup",

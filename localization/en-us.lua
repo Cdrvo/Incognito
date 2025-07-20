@@ -192,12 +192,6 @@ return {
                     "its {C:chips}Chips{} and {C:mult}Mult{} when {C:attention}scored"},
                 }
             },
-            j_nic_potofgreed = {
-                name = "Pot of Greed",
-                text = {
-                    "{C:mult}+4{} Mult",
-                }
-            },
         },
         Other={
             dalgonawarning = {
