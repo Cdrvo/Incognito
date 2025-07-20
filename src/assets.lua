@@ -5,13 +5,6 @@ SMODS.Atlas{ -- Jokers
     py = 95,
 }
 
-SMODS.Atlas{ -- POTOFGREEDJOKE
-    key = "potofgreedjoke",
-    path = "potofgreedjoke.png",
-    px = 71,
-    py = 95,
-}
-
 SMODS.Atlas{ -- Blinds
     key = "nicblinds",
     path = "nicblinds.png",

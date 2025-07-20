@@ -924,7 +924,7 @@ SMODS.Joker{ -- Pearto
 
         if context.joker_main then
             card.ability.extra.mult = G.GAME.hands["Pair"].played * 10
-            card.ability.extra.chips = to_number(G.GAME.hands["Pair"].level) * 50
+            card.ability.extra.chips = to_big(G.GAME.hands["Pair"].level) * 50
             return {
                 mult = card.ability.extra.mult,
                 chips = card.ability.extra.chips
