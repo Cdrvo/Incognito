@@ -205,6 +205,7 @@ return {
                 text = {
                     "{C:red}If Destroyed or Sold{},",
                     "Gives {C:money}-$50",
+                    "(Doesn't apply when itself destroys)"
                 }
             },
         },

@@ -3,7 +3,7 @@
 SMODS.Joker{ -- Dalgona Cookie
     key = "dalgonacookie",
     blueprint_compat = false,
-    eternal_compat = true,
+    eternal_compat = false,
     unlocked = true,
     discovered = false,
     atlas = 'nicjokers',
@@ -44,7 +44,7 @@ SMODS.ObjectType{ -- Pool Dalgona
 SMODS.Joker{ -- Dalgona Circle
     key = "dalgonacircle",
     blueprint_compat = true,
-    eternal_compat = true,
+    eternal_compat = false,
     unlocked = true,
     discovered = false,
     atlas = 'nicjokers',
@@ -95,7 +95,7 @@ SMODS.Joker{ -- Dalgona Circle
             end
         end
 
-        if context.joker_main and card.ability.extra.counter == 0 then
+        if context.joker_main and card.ability.extra.counter == 1 then
             return {
                 xmult = card.ability.extra.xmult
             }
@@ -107,7 +107,7 @@ SMODS.Joker{ -- Dalgona Circle
 SMODS.Joker{ -- Dalgona Triangle
     key = "dalgonatriangle",
     blueprint_compat = true,
-    eternal_compat = true,
+    eternal_compat = false,
     unlocked = true,
     discovered = false,
     atlas = 'nicjokers',
@@ -158,7 +158,7 @@ SMODS.Joker{ -- Dalgona Triangle
             end
         end
 
-        if context.joker_main and card.ability.extra.counter == 0 then
+        if context.joker_main and card.ability.extra.counter == 1 then
             return {
                 xchips = card.ability.extra.xchips
             }
@@ -170,7 +170,7 @@ SMODS.Joker{ -- Dalgona Triangle
 SMODS.Joker{ -- Dalgona Star
     key = "dalgonastar",
     blueprint_compat = false,
-    eternal_compat = true,
+    eternal_compat = false,
     unlocked = true,
     discovered = false,
     atlas = 'nicjokers',
@@ -230,7 +230,7 @@ SMODS.Joker{ -- Dalgona Star
 SMODS.Joker{ -- Dalgona Umbrella
     key = "dalgonaumbrella",
     blueprint_compat = true,
-    eternal_compat = true,
+    eternal_compat = false,
     unlocked = true,
     discovered = false,
     atlas = 'nicjokers',
@@ -281,7 +281,7 @@ SMODS.Joker{ -- Dalgona Umbrella
             end
         end
 
-        if context.joker_main and card.ability.extra.counter == 0 then
+        if context.joker_main and card.ability.extra.counter == 1 then
             if Talisman then
                 return {
                     eemult = card.ability.extra.powmult
