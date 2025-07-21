@@ -12,54 +12,14 @@ return {
         Edition={},
         Enhanced={},
         Joker = {
-            j_nic_dalgonacookie = { -- Common
-                name = "Dalgona Cookie",
-                text = {
-                    "When {C:attention}Blind{} is selected,",
-                    "it becomes {C:attention}1{} of the 4",
-                    "{C:attention}Opened Dalgona Cookies",
-                }
-            },
-            j_nic_dalgonacircle = { -- Common
-                name = "Dalgona Circle",
-                text = {
-                    "{X:mult,C:white} X#1#{} Mult, loses {X:mult,C:white} X#2#{} Mult",
-                    "per {C:attention}unscored card{}",
-                    "{C:inactive}(Gains $50 When Current XMult is 0)",
-                }
-            },
-            j_nic_dalgonatriangle = { -- Common
-                name = "Dalgona Triangle",
-                text = {
-                    "{X:chips,C:white} X#1#{} Chips, loses {X:chips,C:white} X#2#{} Chips",
-                    "per {C:attention}unscored card{}",
-                    "{C:inactive}(Gains $50 When Current XChips is 0)",
-                }
-            },
-            j_nic_dalgonastar = { -- Common
-                name = "Dalgona Star",
-                text = {
-                    "{X:money,C:white} $X#1#{} current cash at the",
-                    "end of round, loses {X:money,C:white} $#2#{}",
-                    "per {C:attention}scored card{}",
-                    "{C:inactive}(Gains $50 When Current Cash is 0)",
-                }
-            },
-            j_nic_dalgonaumbrella = { -- Common
-                name = "Dalgona Umbrella",
-                text = {
-                    "{X:dark_edition,C:white} ^^#1#{} Mult, loses {X:dark_edition,C:white} ^^#2#{} Mult",
-                    "per {C:attention}played card{}",
-                    "{C:inactive}(Gains $50 When Current ^^Mult is 0)",
-                }
-            },
             j_nic_button = { -- Common
                 name = "Button",
                 text = {
                     {"When {C:attention}Clicked or Space{} is Pressed,",
                     "Gains {X:mult,C:white}X0.05{} Mult",
                     "{C:inactive}(Currently {X:mult,C:white} X#3# {C:inactive} Mult}"},
-                    {"{C:attention}Button{} has a {C:green}#1# in #2#{} chance",
+                    {"When {C:attention}Clicked or Space{} is Pressed,",
+                    "{C:attention}Button{} has a {C:green}#1# in #2#{} chance",
                     "to delete itself :3"},
                 }
             },
@@ -135,6 +95,70 @@ return {
                     "{C:inactive} 1, 2, 3, 5, 8, 13, 21, 34, 55... etc",
                     "{C:inactive}(Currently {X:chips,C:white} X#1# {C:inactive} Chips)",
                 }
+            }, -- Dalgona
+            j_nic_dalgonacookie = { -- Uncommon
+                name = "Dalgona Cookie",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "it becomes {C:attention}1{} of the 4",
+                    "{C:attention}Opened Dalgona Cookies",
+                }
+            },
+            j_nic_dalgonacircle = { -- Uncommon
+                name = "Dalgona Circle",
+                text = {
+                    {"Loses {X:mult,C:white}X#2#{} Mult per {C:attention}scored card",
+                    "Gains {X:mult,C:white}X#2#{} Mult per {C:attention}unscored card",
+                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
+                    "{C:inactive,s:0.8}(Min is {X:mult,C:white,s:0.8}X#3#{C:inactive,s:0.8} Max is {X:mult,C:white,s:0.8}X#4#{C:inactive,s:0.8} Mult)"},
+                    {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
+                    "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
+                    "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
+                    "{C:attention}Dalgona{} breaks if {C:red}failed{C:attention} 3 {}times",
+                    "{C:inactive}(#7# remaining)"},
+                }
+            },
+            j_nic_dalgonatriangle = { -- Uncommon
+                name = "Dalgona Triangle",
+                text = {
+                    {"Loses {X:mult,C:white}X#2#{} Mult per {C:attention}scored card",
+                    "Gains {X:mult,C:white}X#2#{} Mult per {C:attention}unscored card",
+                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
+                    "{C:inactive,s:0.8}(Min is {X:mult,C:white,s:0.8}X#3#{C:inactive,s:0.8} Max is {X:mult,C:white,s:0.8}X#4#{C:inactive,s:0.8} Mult)"},
+                    {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
+                    "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
+                    "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
+                    "{C:attention}Dalgona{} breaks if {C:red}failed{C:attention} 3 {}times",
+                    "{C:inactive}(#7# remaining)"},
+                }
+            },
+            j_nic_dalgonastar = { -- Uncommon
+                name = "Dalgona Star",
+                text = {
+                    {"Loses {X:mult,C:white}X#2#{} Mult per {C:attention}scored card",
+                    "Gains {X:mult,C:white}X#2#{} Mult per {C:attention}unscored card",
+                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
+                    "{C:inactive,s:0.8}(Min is {X:mult,C:white,s:0.8}X#3#{C:inactive,s:0.8} Max is {X:mult,C:white,s:0.8}X#4#{C:inactive,s:0.8} Mult)"},
+                    {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
+                    "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
+                    "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
+                    "{C:attention}Dalgona{} breaks if {C:red}failed{C:attention} 3 {}times",
+                    "{C:inactive}(#7# remaining)"},
+                }
+            },
+            j_nic_dalgonaumbrella = { -- Uncommon
+                name = "Dalgona Umbrella",
+                text = {
+                    {"Loses {X:mult,C:white}X#2#{} Mult per {C:attention}scored card",
+                    "Gains {X:mult,C:white}X#2#{} Mult per {C:attention}unscored card",
+                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
+                    "{C:inactive,s:0.8}(Min is {X:mult,C:white,s:0.8}X#3#{C:inactive,s:0.8} Max is {X:mult,C:white,s:0.8}X#4#{C:inactive,s:0.8} Mult)"},
+                    {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
+                    "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
+                    "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
+                    "{C:attention}Dalgona{} breaks if {C:red}failed{C:attention} 3 {}times",
+                    "{C:inactive}(#7# remaining)"},
+                }
             }, -- Teto
             j_nic_kasanejokto = { -- Uncommon
                 name = "Kasane Jokto",
@@ -193,16 +217,7 @@ return {
                 }
             },
         },
-        Other={
-            dalgonawarning = {
-                name = "Dalgona Warning",
-                text = {
-                    "{C:red}If Destroyed or Sold{},",
-                    "Gives {C:money}-$50",
-                    "(Doesn't apply when itself destroys)"
-                }
-            },
-        },
+        Other={},
         Planet={},
         Spectral={},
         Stake={},
