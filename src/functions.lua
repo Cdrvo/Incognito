@@ -11,12 +11,13 @@ to_big = to_big or function(num)
     return num
 end
 
+local getiduse = false
 local getidref = Card.get_id -- Cards are Considered Rank
 function Card:get_id()
 	if not getiduse then
 		getiduse = true
 		local id = getidref(self) or self.base.id
-		if next(SMODS.find_card('j_nic_doctorkidori')) and id >= 2 then id = 4 end
+		if next(SMODS.find_card('j_nic_doctorkidori')) and (id == 2 or id == 3 or id == 5 or id == 6 or id == 7 or id == 8 or id == 9 or id == 10 or id == 11 or id == 12 or id == 13 or id == 14) then id = 4 end
 		getiduse = false
 		return id
 	else
