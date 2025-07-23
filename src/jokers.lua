@@ -208,6 +208,51 @@ SMODS.Joker{ -- Crazy Taxi
     end
 }
 
+SMODS.Joker{ -- Unlucky Cat
+    key = "unluckycat",
+    blueprint_compat = true,
+    eternal_compat = true,
+    unlocked = true,
+    discovered = false,
+    atlas = 'nicjokers',
+    rarity = 2,
+    cost = 6,
+    pos = {x = 5, y = 0},
+    config = { extra = { xmult = 1, xmult_gain = 0.25} },
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_lucky
+        return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_lucky') and not context.other_card.lucky_trigger and not context.blueprint then
+            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.MULT,
+                message_card = card
+            }
+        end
+
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            if G.GAME.blind.boss and card.ability.extra.xmult > 1 then
+                card.ability.extra.xmult = 1
+                return {
+                    message = localize('k_reset'),
+                    colour = G.C.RED
+                }
+            end
+        end
+        
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end
+}
+
 --[[SMODS.Joker{ -- Idk yet
     key = "phase1",
     blueprint_compat = true,
@@ -217,7 +262,7 @@ SMODS.Joker{ -- Crazy Taxi
     atlas = 'nicjokers',
     rarity = 2,
     cost = 5,
-    pos = {x = 5, y = 0},
+    pos = {x = 5, y = 1},
     config = { extra = {} },
 
     loc_vars = function(self, info_queue, center)
@@ -249,7 +294,7 @@ SMODS.Joker{ -- Idk yet
     atlas = 'nicjokers',
     rarity = 2,
     cost = 5,
-    pos = {x = 6, y = 0},
+    pos = {x = 6, y = 1},
     config = { extra = {} },
 
     loc_vars = function(self, info_queue, center)
@@ -474,51 +519,6 @@ SMODS.Joker{ -- Machinedramon
             }
         end
 	end
-}
-
-SMODS.Joker{ -- Unlucky Cat
-    key = "unluckycat",
-    blueprint_compat = true,
-    eternal_compat = true,
-    unlocked = true,
-    discovered = false,
-    atlas = 'nicjokers',
-    rarity = 3,
-    cost = 5,
-    pos = {x = 5, y = 1},
-    config = { extra = { xmult = 1, xmult_gain = 0.25} },
-
-    loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.m_lucky
-        return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_lucky') and not context.other_card.lucky_trigger and not context.blueprint then
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.MULT,
-                message_card = card
-            }
-        end
-
-        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-            if G.GAME.blind.boss and card.ability.extra.xmult > 1 then
-                card.ability.extra.xmult = 1
-                return {
-                    message = localize('k_reset'),
-                    colour = G.C.RED
-                }
-            end
-        end
-        
-        if context.joker_main then
-            return {
-                xmult = card.ability.extra.xmult
-            }
-        end
-    end
 }
 
 -- Legendary
