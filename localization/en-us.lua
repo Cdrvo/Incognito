@@ -41,7 +41,7 @@ return {
                     "{C:inactive}(Currently: #3#)"},
                 }
             },
-            j_nic_crazytaxi = {
+            j_nic_crazytaxi = { -- Uncommon
                 name = "Crazy Taxi",
                 text = {
                     {"When {C:attention}end of round{} is within {C:attention}time,",
@@ -50,6 +50,16 @@ return {
                     "{s:0.8}Time resets every round"},
                     {"Each played {C:attention}#2#{} adds {C:attention}+5 Seconds",
                     "{s:0.8}Rank changes every round"},
+                }
+            },
+            j_nic_unluckycat = { -- Uncommon
+                name = "Unlucky Cat",
+                text = {
+                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "every time a {C:attention}Lucky{} card",
+                    "{C:red}failed{}, resets when",
+                    "{C:attention}Boss Blind{} is defeated",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 }
             },
             j_nic_technoblade = { -- Rare
@@ -92,16 +102,6 @@ return {
                     "{C:mult}+15{} Mult and {X:mult,C:white}X0.5{} Mult",
                     "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult)",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)"},
-                }
-            },
-            j_nic_unluckycat = {
-                name = "Unlucky Cat",
-                text = {
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
-                    "every time a {C:attention}Lucky{} card",
-                    "{C:red}failed{}, resets when",
-                    "{C:attention}Boss Blind{} is defeated",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 }
             },
             j_nic_incognito = { -- Legendary
