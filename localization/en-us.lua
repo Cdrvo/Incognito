@@ -9,7 +9,14 @@ return {
                 }
             }
         },
-        Edition={},
+        Edition={
+            e_nic_test = {
+                name = "Test",
+                text = {
+                    "Test",
+                }
+            }
+        },
         Enhanced={},
         Joker = {
             j_nic_button = { -- Common
@@ -39,7 +46,7 @@ return {
                 text = {
                     {"When {C:attention}end of round{} is within {C:attention}time,",
                     "Earns {C:money}$#1#{} and increases {C:money}cash{} by {C:money}3{}",
-                    "If {C:red}failed{}, {C:attention}Crazy Taxi{} gets destroyed",
+                    "If {C:red}failed{}, This Joker gets destroyed",
                     "{s:0.8}Time resets every round"},
                     {"Each played {C:attention}#2#{} adds {C:attention}+5 Seconds",
                     "{s:0.8}Rank changes every round"},
@@ -67,7 +74,7 @@ return {
                     "round turn into {C:attention}Stone cards{}"},
                     {"Each played {C:attention}Stone card{}",
                     "turns {C:dark_edition}Negative{} and increases",
-                    "{C:attention}Stalgamite{} {C:mult}Mult{} and {C:chips}Chips{} by",
+                    "This Joker {C:mult}Mult{} and {C:chips}Chips{} by",
                     "{C:mult}+25{} Mult and {C:chips}+25{} Chips"},
                     {"{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
                     "for each {C:attention}Stone card{} held in hand",
@@ -85,6 +92,16 @@ return {
                     "{C:mult}+15{} Mult and {X:mult,C:white}X0.5{} Mult",
                     "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult)",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)"},
+                }
+            },
+            j_nic_unluckycat = {
+                name = "Unlucky Cat",
+                text = {
+                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "every time a {C:attention}Lucky{} card",
+                    "{C:red}failed{}, resets when",
+                    "{C:attention}Boss Blind{} is defeated",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 }
             },
             j_nic_incognito = { -- Legendary
@@ -125,7 +142,7 @@ return {
                     {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
                     "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
                     "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
-                    "{C:attention}Dalgona{} breaks if {C:red}failed{C:attention} 3 {}times",
+                    "This Joker breaks if {C:red}failed{C:attention} 3 {}times",
                     "{C:inactive}(#7# remaining)"},
                 }
             },
@@ -139,7 +156,7 @@ return {
                     {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
                     "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
                     "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
-                    "{C:attention}Dalgona{} breaks if {C:red}failed{C:attention} 3 {}times",
+                    "This Joker breaks if {C:red}failed{C:attention} 3 {}times",
                     "{C:inactive}(#7# remaining)"},
                 }
             },
@@ -153,7 +170,7 @@ return {
                     {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
                     "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
                     "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
-                    "{C:attention}Dalgona{} breaks if {C:red}failed{C:attention} 3 {}times",
+                    "This Joker breaks if {C:red}failed{C:attention} 3 {}times",
                     "{C:inactive}(#7# remaining)"},
                 }
             },
@@ -167,7 +184,7 @@ return {
                     {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
                     "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
                     "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
-                    "{C:attention}Dalgona{} breaks if {C:red}failed{C:attention} 3 {}times",
+                    "This Joker breaks if {C:red}failed{C:attention} 3 {}times",
                     "{C:inactive}(#7# remaining)"},
                 }
             }, -- Teto
@@ -197,7 +214,7 @@ return {
                 text = {
                     {"If played hand is a {C:attention}Pair{},",
                     "upgrades {C:attention}Pair{} by {C:attention}#1# level"},
-                    {"{C:attention}Pear{} is destroyed",
+                    {"This Joker is destroyed",
                     "after triggering {C:attention}5{} times",
                     "{C:inactive}(#2# remaining)"},
                 }
