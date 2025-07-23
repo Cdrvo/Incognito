@@ -81,13 +81,13 @@ return {
                 name = "Stalagmite",
                 text = {
                     {"{C:attention}Unscored cards{} in {C:attention}final hand{} of",
-                    "round turn into {C:attention}Stone cards{}"},
-                    {"Each played {C:attention}Stone card{}",
+                    "round turn into {C:attention}Stone{} cards"},
+                    {"Each played {C:attention}Stone{} card",
                     "turns {C:dark_edition}Negative{} and increases",
                     "This Joker {C:mult}Mult{} and {C:chips}Chips{} by",
                     "{C:mult}+25{} Mult and {C:chips}+25{} Chips"},
                     {"{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
-                    "for each {C:attention}Stone card{} held in hand",
+                    "for each {C:attention}Stone{} card held in hand",
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
                     "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips)"},
                 }
@@ -95,13 +95,23 @@ return {
             j_nic_machinedramon = { -- Rare
                 name = "Machinedramon",
                 text = {
-                    {"All cards held in hand turn into",
-                    "{C:attention}Steel cards{} on {C:attention}final hand{} of round"},
-                    {"Played {C:attention}Steel cards{} get ",
+                    {"All {C:attention}cards{} held in hand turn into",
+                    "{C:attention}Steel{} cards on {C:attention}final hand{} of round"},
+                    {"Played {C:attention}Steel{} cards get ",
                     "Destroyed and Gains",
                     "{C:mult}+15{} Mult and {X:mult,C:white}X0.5{} Mult",
                     "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult)",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)"},
+                }
+            },
+            j_nic_thething = { -- Rare
+                name = "The Thing",
+                text = {
+                    {"When round begins, adds {C:attention}#1# Stone{}",
+                    "cards with a random {C:attention}seal{} to your hand"},
+                    {"If {C:attention}first played hand{} of round",
+                    "is a {C:attention}Four of a Kind{}, increase the",
+                    "amount of {C:attention}Stone{} cards by {C:attention}1"},
                 }
             },
             j_nic_incognito = { -- Legendary
@@ -111,7 +121,7 @@ return {
                     "have a {C:green}#1# in #2#{} chance to be",
                     "Destroyed and Gains {X:mult,C:white}X1"},
                     {"{C:spades}Spades{} can't be debuffed"},
-                    {"Each {C:spades}Spades{} held in hand Give",
+                    {"Each {C:spades}Spades{} held in hand give",
                     "{C:inactive}(Currently {X:mult,C:white} X#3# {C:inactive} Mult)"},
                 }
             },

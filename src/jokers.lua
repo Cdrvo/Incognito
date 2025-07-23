@@ -198,13 +198,6 @@ SMODS.Joker{ -- Crazy Taxi
                 }
 			end
         end
-
-        if context.key_press_space then
-            card.ability.start = card.ability.start + 10
-        end
-        if context.key_press_d then
-            card.ability.start = card.ability.start - 10
-        end
     end
 }
 
@@ -295,7 +288,7 @@ SMODS.Joker{ -- Idk yet
     rarity = 2,
     cost = 5,
     pos = {x = 6, y = 1},
-    config = { extra = {} },
+    config = {},
 
     loc_vars = function(self, info_queue, center)
 		return { vars = {} }
@@ -521,6 +514,53 @@ SMODS.Joker{ -- Machinedramon
 	end
 }
 
+SMODS.Joker{ -- The Thing
+    key = "thething",
+    blueprint_compat = true,
+    eternal_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'nicjokers',
+    rarity = 3,
+    cost = 8,
+    pos = {x = 5, y = 1},
+    config = { extra = { counter = 1, counter_gain = 1} },
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.counter } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.first_hand_drawn then
+            if not context.blueprint then
+                local eval = function(card) return G.GAME.current_round.hands_played == 0 and not card.REMOVED end
+                juice_card_until(card, eval, true)
+            end
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    for i = 1, card.ability.extra.counter do
+                        local playing_card = SMODS.create_card { set = "Base", enhancement = "m_stone", seal = SMODS.poll_seal({ guaranteed = true }), area = G.discard }
+                        G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                        playing_card.playing_card = G.playing_card
+                        table.insert(G.playing_cards, playing_card)
+                        G.hand:emplace(playing_card)
+                        playing_card:start_materialize()
+                    end
+                    card:juice_up()
+                    return true
+                end
+            }))
+        end
+        if context.before and context.scoring_name == "Four of a Kind" and G.GAME.current_round.hands_played == 0 and not context.blueprint then
+            card.ability.extra.counter = card.ability.extra.counter + card.ability.extra.counter_gain
+            return {
+                message = "CLOBBERIN' TIME",
+                colour = G.C.BLUE
+            }
+        end
+    end
+}
+
 -- Legendary
 
 SMODS.Joker{ -- Cyan
@@ -534,7 +574,7 @@ SMODS.Joker{ -- Cyan
     cost = 20,
     pos = {x = 0, y = 1},
     soul_pos = {x = 1, y = 1},
-    config = { extra = { xchips = 1, counter = 1 } },
+    config = { extra = { xchips = 1, counter = 1, counter_gain = 1 } },
 
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xchips } }
@@ -542,7 +582,7 @@ SMODS.Joker{ -- Cyan
 
     calculate = function(self, card, context)
         if context.before and context.main_eval and not context.blueprint then 
-            card.ability.extra.counter = card.ability.extra.counter + 1
+            card.ability.extra.counter = card.ability.extra.counter + card.ability.extra.counter_gain
             card:juice_up(0.5, 0.5)
             return { play_sound("nic_neigh") }
         end

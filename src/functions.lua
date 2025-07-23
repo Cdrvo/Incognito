@@ -7,7 +7,7 @@ SMODS.current_mod.set_debuff = function(card) -- Debuff
     end
 end
 
-to_big = to_big or function(num)
+to_big = to_big or function(num) -- Talisman Bullshit
     return num
 end
 
@@ -66,7 +66,7 @@ local function reset_nic_crazytaxi_card() -- Randomize Rank
     end
 end
 
-function SMODS.current_mod.reset_game_globals(run_start)
+function SMODS.current_mod.reset_game_globals(run_start) -- Timer
     reset_nic_crazytaxi_card()
 end
 
