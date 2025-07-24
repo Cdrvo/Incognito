@@ -5,7 +5,7 @@ SMODS.Joker{ -- Button
     blueprint_compat = true,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 1,
     cost = 3,
@@ -50,7 +50,7 @@ SMODS.Joker{ -- Sly Cooper
     blueprint_compat = false,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 2,
     cost = 6,
@@ -316,7 +316,7 @@ SMODS.Joker{ -- Technoblade
     blueprint_compat = true,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 3,
     cost = 8,
@@ -387,7 +387,7 @@ SMODS.Joker{ -- Stalagmite
     blueprint_compat = true,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 3,
     cost = 8,
@@ -443,7 +443,7 @@ SMODS.Joker{ -- Machinedramon
     blueprint_compat = true,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 3,
     cost = 8,
@@ -505,7 +505,7 @@ SMODS.Joker{ -- The Thing
     blueprint_compat = true,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 3,
     cost = 8,
@@ -517,7 +517,7 @@ SMODS.Joker{ -- The Thing
     end,
 
     calculate = function(self, card, context)
-        if context.first_hand_drawn then
+        if context.setting_blind then
             if not context.blueprint then
                 local eval = function(card) return G.GAME.current_round.hands_played == 0 and not card.REMOVED end
                 juice_card_until(card, eval, true)
@@ -525,17 +525,21 @@ SMODS.Joker{ -- The Thing
             G.E_MANAGER:add_event(Event({
                 func = function()
                     for i = 1, card.ability.extra.counter do
-                        local playing_card = SMODS.create_card { set = "Base", enhancement = "m_stone", seal = SMODS.poll_seal({ guaranteed = true }), area = G.discard }
+                        local stone_card = SMODS.create_card { set = "Base", enhancement = "m_stone", seal = SMODS.poll_seal({ guaranteed = true }), area = G.discard }
                         G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                        playing_card.playing_card = G.playing_card
-                        table.insert(G.playing_cards, playing_card)
-                        G.hand:emplace(playing_card)
-                        playing_card:start_materialize()
+                        stone_card.playing_card = G.playing_card
+                        table.insert(G.playing_cards, stone_card)
+                        stone_card:start_materialize()
+                        G.play:emplace(stone_card)
+                        draw_card(G.play, G.deck, 90, 'up')
                     end
-                    card:juice_up()
                     return true
                 end
             }))
+            return {
+                message = "TIS THE CLOBBERIN HOUR",
+                colour = G.C.BLUE
+            }
         end
         if context.before and context.scoring_name == "Four of a Kind" and G.GAME.current_round.hands_played == 0 and not context.blueprint then
             card.ability.extra.counter = card.ability.extra.counter + card.ability.extra.counter_gain
@@ -587,7 +591,7 @@ SMODS.Joker{ -- Incognito
     blueprint_compat = true,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 4,
     cost = 20,
@@ -1153,7 +1157,7 @@ SMODS.Joker{ -- Kasane Jokto
     blueprint_compat = true,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 2,
     cost = 5,
@@ -1186,7 +1190,7 @@ SMODS.Joker{ -- Ambassador Teto
     blueprint_compat = true,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 3,
     cost = 7,
@@ -1259,7 +1263,7 @@ SMODS.Joker{ -- Pear
     blueprint_compat = true,
     eternal_compat = false,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 1,
     cost = 6,
@@ -1322,7 +1326,7 @@ SMODS.Joker{ -- Pearto
     blueprint_compat = true,
     eternal_compat = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     atlas = 'nicjokers',
     rarity = 2,
     cost = 7,

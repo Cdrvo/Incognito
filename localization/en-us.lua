@@ -106,7 +106,7 @@ return {
                 name = "The Thing",
                 text = {
                     {"When round begins, adds {C:attention}#1# Stone{}",
-                    "cards with a random {C:attention}seal{} to your hand"},
+                    "cards with a random {C:attention}seal{} to your deck"},
                     {"If {C:attention}first played hand{} of round",
                     "is a {C:attention}Four of a Kind{}, increase the",
                     "amount of {C:attention}Stone{} cards by {C:attention}1"},
