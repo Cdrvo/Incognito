@@ -1,13 +1,91 @@
-SMODS.current_mod.set_debuff = function(card) -- Debuff
-    if next(SMODS.find_card("j_nic_incognito")) and card.playing_card and card:is_suit("Spades") then
-        return "prevent_debuff"
+-- Config
+
+local old_config = copy_table(Incognito.config)
+local function should_restart()
+    for k, v in pairs(old_config) do
+        if v ~= Incognito.config[k] then
+            SMODS.full_restart = 1
+            return
+        end
     end
-    if next(SMODS.find_card("j_nic_doctorkidori")) and card.playing_card and card:get_id() == 4 then
+    SMODS.full_restart = 0
+end
+
+Incognito.config_tab = function()
+    return {
+        n = G.UIT.ROOT,
+        config = { align = "cm", padding = 0.07, emboss = 0.05, r = 0.1, colour = G.C.BLACK, minh = 4.5, minw = 7 },
+        nodes = {
+            {
+                n = G.UIT.R,
+                config = { align = "cm", minh = 0.6 },
+                nodes = {
+                    { n = G.UIT.T, config = { text = "Requires restart!", colour = G.C.RED, scale = 0.6 } },
+                },
+            },
+            {
+                n = G.UIT.R,
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        nodes = {
+                            create_toggle({
+                                label = "Other Jokers Enabled",
+                                ref_table = Incognito.config,
+                                ref_value = "other_jokers",
+                                callback = should_restart,
+                            }),
+                        },
+                    },
+                },
+            },
+            {
+                n = G.UIT.R,
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        nodes = {
+                            create_toggle({
+                                label = "Teto Things Enabled",
+                                ref_table = Incognito.config,
+                                ref_value = "teto_things",
+                                callback = should_restart,
+                            }),
+                        },
+                    },
+                },
+            },
+            {
+                n = G.UIT.R,
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        nodes = {
+                            create_toggle({
+                                label = "Scrapped Concepts [Mid]",
+                                ref_table = Incognito.config,
+                                ref_value = "scrapped_things",
+                                callback = should_restart,
+                            }),
+                        },
+                    },
+                },
+            },
+        },
+    }
+end
+
+-- Debuff
+
+SMODS.current_mod.set_debuff = function(card)
+    if next(SMODS.find_card("j_nic_incognito")) and card.playing_card and card:is_suit("Spades") then
         return "prevent_debuff"
     end
 end
 
-to_big = to_big or function(num) -- Talisman Bullshit
+-- Talisman Bullshit
+
+to_big = to_big or function(num)
     return num
 end
 
@@ -15,13 +93,15 @@ to_number = to_number or function(num)
     return num
 end
 
+-- Cards are Considered Rank
+
 local getiduse = false
-local getidref = Card.get_id -- Cards are Considered Rank
+local getidref = Card.get_id
 function Card:get_id()
 	if not getiduse then
 		getiduse = true
 		local id = getidref(self) or self.base.id
-		if next(SMODS.find_card('j_nic_doctorkidori')) and (id == 2 or id == 3 or id == 5 or id == 6 or id == 7 or id == 8 or id == 9 or id == 10 or id == 11 or id == 12 or id == 13 or id == 14) then id = 4 end
+		if next(SMODS.find_card('j_nic_doctorkidori')) then id = 4 end
 		getiduse = false
 		return id
 	else
@@ -30,7 +110,9 @@ function Card:get_id()
 	end
 end
 
-nic = {} -- Vouchers/Boosters
+-- Vouchers/Boosters
+
+nic = {}
 
 function nic_ctx(context)
     if context.nic_buying_voucher then return 'buy a voucher' end
@@ -55,7 +137,9 @@ function Card:redeem()
     return nic.hooks.Card_redeem(self)
 end
 
-local function reset_nic_crazytaxi_card() -- Randomize Rank
+-- Randomize Rank
+
+local function reset_nic_crazytaxi_card()
     G.GAME.current_round.nic_crazytaxi_card = { rank = 'Ace' }
     local valid_crazytaxi_card = {}
     for _, playing_card in ipairs(G.playing_cards) do
@@ -70,11 +154,15 @@ local function reset_nic_crazytaxi_card() -- Randomize Rank
     end
 end
 
-function SMODS.current_mod.reset_game_globals(run_start) -- Timer
+-- Timer
+
+function SMODS.current_mod.reset_game_globals(run_start)
     reset_nic_crazytaxi_card()
 end
 
-local lcpref = Controller.L_cursor_press -- Cryptid
+-- Cryptid
+
+local lcpref = Controller.L_cursor_press
 function Controller:L_cursor_press(x, y)
     lcpref(self, x, y)
     if G and G.jokers and G.jokers.cards and not G.SETTINGS.paused then
@@ -82,7 +170,9 @@ function Controller:L_cursor_press(x, y)
     end
 end
 
-local nicmodpress = love.keypressed -- Keypress
+-- Keypress
+
+local nicmodpress = love.keypressed
 function love.keypressed(key)
     if key == "space" then
         if G and G.jokers and G.jokers.cards and not G.SETTINGS.paused then
@@ -102,44 +192,6 @@ function love.keypressed(key)
     return (nicmodpress(key))
 end
 
-local hoverref = Card.hover -- Invisible Woman
-function Card:hover()
-    hoverref(self)
-    if self.config.center.key == "j_nic_invisiblewoman" then
-        local _atlas, _pos = get_front_spriteinfo(self.config.card)
-        _pos = { x = 1, y = 0 }
-        _atlas = G.ASSET_ATLAS['nic_invisiblewoman']
-        if self.children.front then
-            self.children.front.atlas = _atlas
-            self.children.front:set_sprite_pos(_pos)
-        else
-            self.children.front = Sprite(self.T.x, self.T.y, self.T.w, self.T.h, _atlas, _pos)
-            self.children.front.states.hover = self.states.hover
-            self.children.front.states.click = self.states.click
-            self.children.front.states.drag = self.states.drag
-            self.children.front.states.collide.can = false
-            self.children.front:set_role({major = self, role_type = 'Glued', draw_major = self})
-        end
-    end
-end
-local stop_hoverref = Card.stop_hover
-function Card:stop_hover()
-    stop_hoverref(self)
-    if self.config.center.key == "j_nic_invisiblewoman" then
-        local _atlas, _pos = get_front_spriteinfo(self.config.card)
-        _pos = { x = 0, y = 0 }
-        _atlas = G.ASSET_ATLAS['nic_invisiblewoman']
-        if self.children.front then
-            self.children.front.atlas = _atlas
-            self.children.front:set_sprite_pos(_pos)
-        else
-            self.children.front = Sprite(self.T.x, self.T.y, self.T.w, self.T.h, _atlas, _pos)
-            self.children.front.states.hover = self.states.hover
-            self.children.front.states.click = self.states.click
-            self.children.front.states.drag = self.states.drag
-            self.children.front.states.collide.can = false
-            self.children.front:set_role({major = self, role_type = 'Glued', draw_major = self})
-        end
-    end
-end
+SMODS.optional_features = { cardareas = {}, retrigger_joker = true }
+
 -- card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "71!", colour = HEX("d0d0d0")})

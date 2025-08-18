@@ -23,20 +23,19 @@ return {
                     "to delete itself :3"},
                 }
             },
-            j_nic_test = {
-                name = "AGHHH",
+            j_nic_ratiotechnique = { -- Common
+                name = "Ratio Technique",
                 text = {
-                    "Leftover {C:chips}chips{} from the {C:attention}score", 
-                    "{C:attention}requirement{} are {C:attention}halved{} and used as",
-                    "current {C:chips}chips{} for the {C:attention}first hand",
-                    "{C:inactive}(Leftover chips last round: {C:attention}#1#{C:inactive})",
-                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+                    "{C:green}#1# in #2#{} chance",
+                    "Card located at the {C:attention}7:3{} ratio",
+                    "mark {C:attention}in hand{} gets Destroyed",
+                    "{C:inactive,s:0.8}| - | - | - | - | - | - | - o - | - | - |",
+                    "{C:inactive}(Currently #3##4#)",
                 }
             },
             j_nic_slycooper = { -- Uncommon
                 name = "Sly Cooper",
                 text = {
-                    {"+1 Extra {C:attention}Shop{} Slot"},
                     {"When {C:attention}Blind{} is defeated, Buy",
                     "{C:attention}One Item{} for {C:green}Free{} in the {C:attention}Shop{},",
                     "{C:green}#1# in #2#{} chance you get",
@@ -55,29 +54,23 @@ return {
                     "{s:0.8}Rank changes every round"},
                 }
             },
-            j_nic_unluckycat = { -- Uncommon
-                name = "Unlucky Cat",
+            j_nic_strawberrycake = { -- Uncommon
+                name = "Strawberry Cake",
                 text = {
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
-                    "every time a {C:attention}Lucky{} card",
-                    "{C:red}failed{}, resets when",
-                    "{C:attention}Boss Blind{} is defeated",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    {"{C:attention}First hand{} of round turns all",
+                    "{C:attention}played cards{} into {C:hearts}Hearts"},
+                    {"Each {C:attention}card{} in played {C:attention}Flush",
+                    "after {C:attention}first hand{} permanently",
+                    "gains {C:mult}+#1#{} Mult when scored"},
                 }
             },
             j_nic_technoblade = { -- Rare
                 name = "Technoblade",
                 text = {
-                    {"Prevents Death if chips scored",
-                    "are at least {C:attention}50%{} of required chips ",
-                    "{S:1.1,C:red,E:2}self destructs"},
-                    {"Plays {C:red}Pigstep{} by {C:attention}Lena Raine"},
-                    {"When {C:attention}Blind{} is selected, destroy",
-                    "Joker to the right and permanently",
-                    "Gains {C:attention}triple{} its sell value to {C:mult}Mult",
-                    "Gains {C:attention}quadruple{} its sell value to {C:chips}Chips",
-                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"},
+                    "Prevents Death {C:attention}#2#{C:inactive} [#1#]{} times if chips",
+                    "scored are at least {C:attention}#3#%{} of required chips ",
+                    "{C:inactive,s:0.8}Increases % by 25% every death",
+                    "{s:1.1,C:red,E:2}self destructs when [0]",
                 }
             },
             j_nic_stalagmite = { -- Rare
@@ -98,11 +91,32 @@ return {
                 text = {
                     {"All {C:attention}cards{} held in hand turn into",
                     "{C:attention}Steel{} cards on {C:attention}final hand{} of round"},
-                    {"Played {C:attention}Steel{} cards get ",
-                    "Destroyed and Gains",
-                    "{C:mult}+15{} Mult and {X:mult,C:white}X0.5{} Mult",
-                    "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult)",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)"},
+                    {"Played {C:attention}Steel{} cards get destroyed",
+                    "and gains {C:mult}+15{} Mult and {X:mult,C:white}X0.5{} Mult",
+                    "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult and {X:mult,C:white} X#2# {C:inactive} Mult)"},
+                }
+            },
+            j_nic_invertedspearofheaven = { -- Rare
+                name = "Inverted Spear of Heaven",
+                text = {
+                    {"When {C:attention}Blind{} is selected, destroy Adjacent",
+                    "Jokers and gain {X:mult,C:white}X0.5{} Mult for each",
+                    "{C:inactive,s:0.8}This also includes Enternals",
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"},
+                    {"If Both Jokers get destroyed in",
+                    "{C:attention}Boss Blind{}, disable {C:attention}Boss Blind{} effects",
+                    "{C:inactive,s:0.8}This Joker cannot be destroyed (except for itself)",
+                    "{C:dark_edition}+1 Joker Slot"},
+                }
+            },
+            j_nic_cyan = { -- Rare
+                name = "Cyan",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "{X:attention,C:white}X#1#{} Blind Requirement and",
+                    "create {C:attention}1 {C:spectral}Black Hole",
+                    "{C:inactive}(Must have room",
+                    "{C:inactive}or it won't activate)",
                 }
             },
             j_nic_humantorch = { -- Rare
@@ -157,167 +171,260 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white} X#3# {C:inactive} Mult)"},
                 }
             },
-            j_nic_cyan = { -- Legendary
-                name = "Cyan",
+            
+            -- Teto
+
+            j_nic_kasanejokto = {
+                name = "Kasane Jokto",
+                text = {
+                    "{C:attention}Retrigger{} played {C:attention}4s{}",
+                    "an additional {C:attention}two{} times",
+                    "{C:inactive,s:0.8,E:1}Inspired By: Neato Jokers",
+                }
+            },
+            j_nic_ambassadorteto = {
+                name = "Ambassador Teto",
+                text = {
+                    "All cards held in hand",
+                    "change {C:attention}suits{} in this order",
+                    "{C:clubs}Clubs{} > {C:diamonds}Diamonds{} >",
+                    "{C:spades}Spades{} > {C:hearts}Hearts{}",
+                    "{C:inactive}(Stops at {C:hearts}Hearts{C:inactive})",
+                    "{C:inactive,s:0.8,E:1}Credit: dada",
+                }
+            },
+            j_nic_pear = {
+                name = "Pear",
+                text = {
+                    "Level up the next {C:attention}#3#{C:inactive} [#2#]{} played",
+                    "{C:attention}Pair{} by {C:attention}#1#{} and then {C:red,E:2}self destructs",
+                }
+            }, 
+            j_nic_pearto = {
+                name = "Pearto",
+                text = {
+                    "Level up played {C:attention}Pair{} by {C:attention}#3#",
+                    "{C:green}#1# in #2#{} chance this card",
+                    "is destroyed at end of round",
+                }
+            },
+            j_nic_doctorkidori = {
+                name = "Doctor Kidori",
+                text = {
+                    "All cards are",
+                    "considered {C:attention}4{}",
+                    "{C:inactive,s:0.8,E:1}Credit: {C:inactive,f:5,s:0.8,E:1}原口沙輔",
+                    "{C:inactive,s:0.8,E:1} Hako, Sasuke Haraguchi",
+                }
+            },
+            j_nic_birdbrainteto = { 
+                name = "Birdbrain Teto",
+                text = {
+                    "This Joker gains {C:mult}+#2#{} Mult",
+                    "per {C:attention}consecutive Pair",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+                    "{C:inactive,s:0.8,E:1}Credit: Jamie Paige",
+
+                }
+            }, 
+            j_nic_tenebrerossosangueteto = { 
+                name = "Tenebre Rosso Sangue Teto",
+                text = {
+                    "This Joker gains {C:money}$#1#{} for",
+                    "each {C:hearts}Heart{} card destroyed",
+                    "{C:inactive,s:0.8,E:1}Credit: Sandwich",
+                }
+            },
+            j_nic_spokenforteto = { 
+                name = "Spoken For Teto",
+                text = {
+                    "Each {V:1}Teto{} themed {C:attention}card",
+                    "gives {X:red,C:white} X#1# {} Mult ",
+                    "{C:inactive,s:0.8,E:1}Credit: FLAVOR FOLEY",
+                }
+            },
+            j_nic_tetowordoftheday = { 
+                name = "Teto Word Of The Day",
+                text = {
+                    "After {C:attention}#2# Boss Blind{} rounds,",
+                    "sell this card to {C:attention}Create",
+                    "a random {V:1}Teto{} Joker",
+                    "{C:inactive,s:0.8}(Must have room)",
+                    "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)",
+                }
+            },
+            j_nic_mesmerizerteto = { 
+                name = "Mesmerizer Teto",
+                text = {
+                    "Retrigger leftmost {V:1}Teto",
+                    "Joker {C:attention}#1#{} additional times",
+                    "{C:inactive,s:0.8,E:1}Credit: 32ki",
+                }
+            },
+            j_nic_spamteto = {
+                name = "[Spamteto]",
+                text = {
+                    "Earn {X:money,C:white}[ +$#1#% ]{} of current",
+                    "cash at end of round",
+                    "{C:inactive}(Cash out {C:money}$#2#{C:inactive})",
+                    "{C:inactive,s:0.8} [Press F1 For] HELP",
+                }
+            },
+            j_nic_tetoris = {
+                name = "Tetoris",
+                text = {
+                    "Create a {C:tarot}Sun Tarot{} card",
+                    "for every {C:attention}#2#{C:inactive} [#1#] {C:attention}hands{}",
+                    "that contains {C:hearts}Hearts",
+                    "{C:inactive}(Must have room)",
+                    "{C:inactive,s:0.8,E:1}Credit: Hiiragi Magnetit",
+                }
+            },
+            j_nic_minimumrageteto = {
+                name = "Minimum Rage Teto ",
+                text = {
+                    "Recent bought {C:attention}card cost",
+                    "adds into current {C:mult}Mult{},",
+                    "resets when any {C:attention}card{} is {C:attention}sold",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+                    "{C:inactive,s:0.8,E:1}Credit: MonochroMenace",
+                }
+            },
+
+            -- Scrapped
+
+            j_nic_overflow = {
+                name = "Overflow",
+                text = {
+                    "Leftover {C:chips}chips{} from the {C:attention}score", 
+                    "{C:attention}requirement{} are {C:attention}halved{} and used as",
+                    "current {C:chips}chips{} for the {C:attention}first hand",
+                    "{C:inactive}(Leftover chips last round: {C:attention}#1#{C:inactive})",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+                }
+            },
+            j_nic_reroll = {
+                name = "Infinite Reroll",
+                text = {
+                    "+1 Extra {C:attention}Shop{} Slot",
+                    "{C:green}Infinite Reroll",
+                }
+            },
+            j_nic_thetruefibonaccisequence = {
+                name = "The True Fibonacci Sequence",
                 text = {
                     "When {C:attention}Scored{}, Increases {X:chips,C:white}XChips",
                     "by the {C:attention}Fibonacci Sequence",
                     "{C:inactive} 1, 2, 3, 5, 8, 13, 21, 34, 55... etc",
                     "{C:inactive}(Currently {X:chips,C:white} X#1# {C:inactive} Chips)",
                 }
-            }, -- Dalgona
-            j_nic_dalgonacookie = { -- Uncommon
-                name = "Dalgona Cookie",
-                text = {
-                    "When {C:attention}Blind{} is selected,",
-                    "it becomes {C:attention}1{} of the 4",
-                    "{C:attention}Opened Dalgona Cookies",
-                }
-            },
-            j_nic_dalgonacircle = { -- Uncommon
-                name = "Dalgona Circle",
-                text = {
-                    {"Loses {X:mult,C:white}X#2#{} Mult per {C:attention}scored card",
-                    "Gains {X:mult,C:white}X#2#{} Mult per {C:attention}unscored card",
-                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
-                    "{C:inactive,s:0.8}(Min is {X:mult,C:white,s:0.8}X#3#{C:inactive,s:0.8} Max is {X:mult,C:white,s:0.8}X#4#{C:inactive,s:0.8} Mult)"},
-                    {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
-                    "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
-                    "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
-                    "This Joker breaks if {C:red}failed{C:attention} 3 {}times",
-                    "{C:inactive}(#7# remaining)"},
-                }
-            },
-            j_nic_dalgonatriangle = { -- Uncommon
-                name = "Dalgona Triangle",
-                text = {
-                    {"Loses {X:mult,C:white}X#2#{} Mult per {C:attention}scored card",
-                    "Gains {X:mult,C:white}X#2#{} Mult per {C:attention}unscored card",
-                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
-                    "{C:inactive,s:0.8}(Min is {X:mult,C:white,s:0.8}X#3#{C:inactive,s:0.8} Max is {X:mult,C:white,s:0.8}X#4#{C:inactive,s:0.8} Mult)"},
-                    {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
-                    "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
-                    "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
-                    "This Joker breaks if {C:red}failed{C:attention} 3 {}times",
-                    "{C:inactive}(#7# remaining)"},
-                }
-            },
-            j_nic_dalgonastar = { -- Uncommon
-                name = "Dalgona Star",
-                text = {
-                    {"Loses {X:mult,C:white}X#2#{} Mult per {C:attention}scored card",
-                    "Gains {X:mult,C:white}X#2#{} Mult per {C:attention}unscored card",
-                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
-                    "{C:inactive,s:0.8}(Min is {X:mult,C:white,s:0.8}X#3#{C:inactive,s:0.8} Max is {X:mult,C:white,s:0.8}X#4#{C:inactive,s:0.8} Mult)"},
-                    {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
-                    "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
-                    "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
-                    "This Joker breaks if {C:red}failed{C:attention} 3 {}times",
-                    "{C:inactive}(#7# remaining)"},
-                }
-            },
-            j_nic_dalgonaumbrella = { -- Uncommon
-                name = "Dalgona Umbrella",
-                text = {
-                    {"Loses {X:mult,C:white}X#2#{} Mult per {C:attention}scored card",
-                    "Gains {X:mult,C:white}X#2#{} Mult per {C:attention}unscored card",
-                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
-                    "{C:inactive,s:0.8}(Min is {X:mult,C:white,s:0.8}X#3#{C:inactive,s:0.8} Max is {X:mult,C:white,s:0.8}X#4#{C:inactive,s:0.8} Mult)"},
-                    {"If Current {X:mult,C:white} XMult{} is [ {X:mult,C:white} X#5#{} ], gains",
-                    "{C:money}$#6#{} of {C:attention}sell value{} at end of round",
-                    "{X:mult,C:white,s:0.8}XMult{C:inactive,s:0.8} requirement changes every round",
-                    "This Joker breaks if {C:red}failed{C:attention} 3 {}times",
-                    "{C:inactive}(#7# remaining)"},
-                }
-            }, -- Teto
-            j_nic_kasanejokto = { -- Uncommon
-                name = "Kasane Jokto",
-                text = {
-                    "{C:attention}Retrigger{} played {C:attention}4s{}",
-                    "an additional {C:attention}two{} times"
-                }
-            },
-            j_nic_ambassadorteto = { -- Rare
-                name = "Ambassador Teto",
-                text = {
-                    {"All cards held in hand",
-                    "change {C:attention}suits{} in this order",
-                    "{C:clubs}Clubs{} > {C:diamonds}Diamonds{} >",
-                    "{C:spades}Spades{} > {C:hearts}Hearts{}",
-                    "{C:inactive}(Stops at {C:hearts}Hearts{C:inactive})"},
-                    {"All {C:hearts}Hearts{} held in",
-                    "hand give {X:mult,C:white}X1.5{} Mult",
-                    "All {C:attention}4{} of {C:hearts}Hearts{} held in",
-                    "hand give {X:mult,C:white}X3{} Mult"},
-                }
-            },
-            j_nic_pear = { -- Common
-                name = "Pear",
-                text = {
-                    {"If played hand is a {C:attention}Pair{},",
-                    "upgrades {C:attention}Pair{} by {C:attention}#1# levels"},
-                    {"This Joker is destroyed",
-                    "after triggering {C:attention}5{} times",
-                    "{C:inactive}(#2# remaining)"},
-                }
-            },
-            j_nic_pearto = { -- Rare
-                name = "Pearto",
-                text = {
-                    {"If played hand is a {C:attention}Pair{},",
-                    "upgrades {C:attention}Pair{} by {C:attention}#1# levels"},
-                    {"For every played {C:attention}Pair{},",
-                    "gains {C:mult}+10{} Mult",
-                    "For every {C:attention}level{} of {C:attention}Pair,",
-                    "gains {C:chips}+50{} Chips",
-                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
-                    "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"},
-                }
-            },
-            j_nic_doctorkidori = { -- Legendary
-                name = "Doctor Kidori",
-                text = {
-                    {"All {C:attention}cards{} are considered {C:attention}4s",
-                    "All {C:attention}4s{} can't be debuffed"},
-                    {"When on the {C:attention}rightmost{} slot,",
-                    "all played hands are considered {C:attention}Pair"},
-                    {"All played {C:attention}4s{} give {X:mult,C:white}X#1#{} Mult",
-                    "and {C:attention}permanently{} doubles", 
-                    "its {C:chips}Chips{} and {C:mult}Mult{} when {C:attention}scored"},
-                }
             },
         },
         Other={
-            extraslot = {
-                name = "Extra Slot",
+            nic_tetosticker = {
+                name = "Teto",
                 text = {
-                    "{C:dark_edition}+1{} Joker slot",
+                    "This Joker is",
+                    "considered a {V:1}Teto",
+                }
+            },
+            nic_moonphases = {
+                name = "Moon Phases",
+                text = {
+                    "When in pack, {C:spectral}Moon{} goes into", 
+                    "{C:attention}Consumeables slot{} when {C:attention}used",
+                    "{C:inactive}(Must have room)",
+                }
+            }
+        },
+        Planet={},
+        Spectral={
+            c_nic_newmoon = {
+                name = "New Moon",
+                text = {
+                    "Changes {C:spectral}Phases{} after every {C:attention}Play",
+                    "Can only {C:attention}use{} in {C:attention}Shop",
+                }
+            },
+            c_nic_waxingcrescent = {
+                name = "Waxing Crescent",
+                text = {
+                    "Changes {C:spectral}Phases{} after every {C:attention}Play",
+                    "Can only {C:attention}use{} in {C:attention}Shop",
+                }
+            },
+            c_nic_firstquarter = {
+                name = "First Quarter",
+                text = {
+                    "Changes {C:spectral}Phases{} after every {C:attention}Play",
+                    "Can only {C:attention}use{} in {C:attention}Shop",
+                }
+            },
+            c_nic_waxinggibbous = {
+                name = "Waxing Gibbous",
+                text = {
+                    "Changes {C:spectral}Phases{} after every {C:attention}Play",
+                    "Can only {C:attention}use{} in {C:attention}Shop",
+                }
+            },
+            c_nic_fullmoon = {
+                name = "Full Moon",
+                text = {
+                    "Changes {C:spectral}Phases{} after every {C:attention}Play",
+                    "Can only {C:attention}use{} in {C:attention}Shop",
+                }
+            },
+            c_nic_waninggibbous = {
+                name = "Waning Gibbous",
+                text = {
+                    "Changes {C:spectral}Phases{} after every {C:attention}Play",
+                    "Can only {C:attention}use{} in {C:attention}Shop",
+                }
+            },
+            c_nic_thirdquarter = {
+                name = "Third Quarter",
+                text = {
+                    "Changes {C:spectral}Phases{} after every {C:attention}Play",
+                    "Can only {C:attention}use{} in {C:attention}Shop",
+                }
+            },
+            c_nic_waningscrescent = {
+                name = "Waning Crescent",
+                text = {
+                    "Changes {C:spectral}Phases{} after every {C:attention}Play",
+                    "Can only {C:attention}use{} in {C:attention}Shop",
                 }
             },
         },
-        Planet={},
-        Spectral={},
         Stake={},
         Tag={},
-        Tarot={},
+        Tarot={
+            c_nic_tetotarot = {
+                name = "Tetarot",
+                text = {
+                    "Gives leftmost Joker",
+                    "a {V:1}Teto{} Sticker"
+                }
+            },
+        },
         Voucher={},
     },
     misc = {
         achievement_descriptions={},
         achievement_names={},
         blind_states={},
-        challenge_names={
-            c_nic_incognito = "OOPS? ALL SWOONS!",
-            c_nic_machinedramon = "THE FUTURE WILL BE PAVED WITH METAL!",
-        },
+        challenge_names={},
         collabs={},
         dictionary={
             k_nic_incognito = "Incognito",
-            k_nic_dalgona = "Dalgona",
-            ph_nic_technoblade = "SAVED BY TECHNOBLADE NEVER DIES!",
+            k_nic_teto = "Teto",
+            k_nic_scrapped = "Scrapped",
+            ph_nic_technoblade = "TECHNOBLADE NEVER DIES!",
         },
         high_scores={},
-        labels={},
+        labels={
+            nic_tetosticker = "Teto",
+        },
         poker_hand_descriptions={},
         poker_hands={},
         quips={},
@@ -328,20 +435,9 @@ return {
         v_dictionary={
             nic_active = "Active!",
             nic_inactive = "Inactive!",
+            nic_tetoactive = "Mesmerized!",
+            nic_tetoinactive = "No Luck! No Hope!",
         },
-        v_text={
-            ch_c_nic_incognito1 = {
-                "You have {C:clubs}Clubs{}, {C:hearts}Hearts{}, {C:diamonds}Diamonds{}"
-            },
-            ch_c_nic_incognito2 = {
-                "But you don't have any {C:spades}Spades{}"
-            },
-            ch_c_nic_incognito3 = {
-                "Let's see how {C:spades}Incognito{} you are"
-            },
-            ch_c_nic_machinedramon1 = {
-                "MACHINEDRAMON"
-            },
-        },
+        v_text={},
     },
 }

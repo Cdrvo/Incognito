@@ -5,16 +5,37 @@ SMODS.Atlas{ -- Jokers
     py = 95,
 }
 
-SMODS.Atlas{ -- Placeholder
-    key = "placeholder",
-    path = "placeholder.png",
+SMODS.Atlas{ -- Phases
+    key = "phases",
+    path = "phases.png",
     px = 71,
     py = 95,
 }
 
-SMODS.Atlas{ -- Invisible Woman
-    key = "invisiblewoman",
-    path = "invisiblewoman.png",
+SMODS.Atlas{ -- Teto Jokers
+    key = "nictetojokers",
+    path = "nictetojokers.png",
+    px = 71,
+    py = 95,
+}
+
+SMODS.Atlas{ -- Tarots
+    key = "nictarots",
+    path = "nictarots.png",
+    px = 71,
+    py = 95,
+}
+
+SMODS.Atlas{ -- Sticker
+    key = "nicstickers",
+    path = "nicstickers.png",
+    px = 71,
+    py = 95,
+}
+
+SMODS.Atlas{ -- Placeholder
+    key = "placeholder",
+    path = "placeholder.png",
     px = 71,
     py = 95,
 }
@@ -47,15 +68,6 @@ SMODS.Sound{ -- Black Knife
     path = "black_knife.ogg",
     select_music_track = function (self)
         return next(SMODS.find_card("j_nic_incognito")) and 1e10 or nil
-    end,
-    pitch = 1,
-}
-
-SMODS.Sound{ -- Pigstep
-    key = "music_pigstep",
-    path = "pigstep.ogg",
-    select_music_track = function (self)
-        return next(SMODS.find_card("j_nic_technoblade")) and 1e10 or nil
     end,
     pitch = 1,
 }
@@ -100,6 +112,11 @@ SMODS.Sound{ -- Neigh
     path = "neigh.ogg",
 }
 
+SMODS.Sound{ -- Spamtonf1
+    key = "spamtonf1",
+    path = "spamtonf1.ogg",
+}
+
 SMODS.Sound{ -- Technoblade Never Dies
     key = "technoblade",
     path = "technoblade.ogg",
@@ -108,6 +125,11 @@ SMODS.Sound{ -- Technoblade Never Dies
 SMODS.Sound{ -- Teto Oh My God My Penis
     key = "tetoohmygodmypenis",
     path = "tetoohmygodmypenis.ogg",
+}
+
+SMODS.Sound{ -- Teto Word Of The Day
+    key = "tetowordoftheday",
+    path = "tetowordoftheday.ogg",
 }
 
 SMODS.Sound{ -- Win

@@ -31,18 +31,16 @@ SMODS.Booster{
         ease_background_colour(HEX("000000"))
         play_sound("nic_tetoohmygodmypenis")
         return { 
-            set = "tetojokers", 
+            set = "Teto", 
             area = G.pack_cards,
         }
     end,
 }
 
 SMODS.ObjectType{
-    key = "tetojokers",
-    cards = {
-        ['j_nic_kasanejokto'] = true,
-        ['j_nic_ambassadorteto'] = true,
-        ['j_nic_pear'] = true,
-        ['j_nic_pearto'] = true,
-    },
+    key = "Teto",
+    cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
 }
