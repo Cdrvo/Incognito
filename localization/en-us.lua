@@ -77,21 +77,41 @@ return {
             j_nic_dalgonacircle = {
                 name = "Dalgona Circle",
                 text = {
+                    "This Joker gains {C:mult}+#2#{} Mult",
+                    "if the round had a played",
+                    "{C:attention}High Card{}, {C:attention}Pair{}, or {C:attention}Two Pair",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+                    " {C:inactive,s:0.8}This Joker breaks if failed {C:attention,s:0.8}#4#{C:inactive,s:0.8} [#3#]{C:attention,s:0.8} time ",
                 }
             },
             j_nic_dalgonatriangle = {
                 name = "Dalgona Triangle",
                 text = {
+                    "This Joker gains {C:mult}+#2#{} Mult",
+                    "if the round had a played",
+                    "{C:attention}3oak{}, {C:attention}Straight{}, or {C:attention}Flush",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+                    " {C:inactive,s:0.8}This Joker breaks if failed {C:attention,s:0.8}#4#{C:inactive,s:0.8} [#3#]{C:attention,s:0.8} time ",
                 }
             },
             j_nic_dalgonastar = {
                 name = "Dalgona Star",
                 text = {
+                    "This Joker gains {X:mult,C:white}X#2#{} Mult",
+                    "if the round had a played",
+                    "{C:attention}Full House{}, {C:attention}4oak{}, or {C:attention}Straight Flush",
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+                    " {C:inactive,s:0.8}This Joker breaks if failed {C:attention,s:0.8}#4#{C:inactive,s:0.8} [#3#]{C:attention,s:0.8} time ",
                 }
             },
             j_nic_dalgonaumbrella = {
                 name = "Dalgona Umbrella",
                 text = {
+                    "This Joker gains {X:mult,C:white}X#2#{} Mult",
+                    "if the round had a played",
+                    "{C:attention}5oak{}, {C:attention}Flush House{}, or {C:attention}Flush Five",
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+                    " {C:inactive,s:0.8}This Joker breaks if failed {C:attention,s:0.8}#4#{C:inactive,s:0.8} [#3#]{C:attention,s:0.8} time ",
                 }
             },
             j_nic_humantorch = {

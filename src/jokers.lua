@@ -317,12 +317,52 @@ SMODS.Joker{ -- Dalgona Circle
     rarity = 2,
     cost = 0,
     pos = {x = 6, y = 0},
-    config = { extra = {} },
+    config = { extra = { mult = 0, mult_gain = 3, success = 0, cookie = 3, cookie_needed = 3, cookie_loss = 1 } },
     pools = { Food = true },
 
     in_pool = function(self, args)
         return false
     end,
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain, card.ability.extra.cookie, card.ability.extra.cookie_needed } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.before and context.main_eval and not context.blueprint and not context.retrigger_joker then
+            if context.scoring_name == "High Card" or context.scoring_name == "Pair" or context.scoring_name == "Two Pair" then
+                card.ability.extra.success = 1
+            end
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            if card.ability.extra.success == 1 then 
+                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                return {
+                    message = "SUCCESS!",
+                    colour = G.C.MONEY
+                }
+            else
+                if card.ability.extra.cookie - card.ability.extra.cookie_loss <= 0 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    return {
+                        message = "FAILED!",
+                        colour = G.C.RED
+                    }
+                else
+                    card.ability.extra.cookie = card.ability.extra.cookie - card.ability.extra.cookie_loss
+                    return {
+                        message = "CRACKED...",
+                        colour = G.C.RED
+                    }
+                end
+            end
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
 }
 
 SMODS.Joker{ -- Dalgona Triangle
@@ -335,12 +375,52 @@ SMODS.Joker{ -- Dalgona Triangle
     rarity = 2,
     cost = 0,
     pos = {x = 7, y = 0},
-    config = { extra = {} },
+    config = { extra = { mult = 0, mult_gain = 10, success = 0, cookie = 3, cookie_needed = 3, cookie_loss = 1 } },
     pools = { Food = true },
 
     in_pool = function(self, args)
         return false
     end,
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain, card.ability.extra.cookie, card.ability.extra.cookie_needed } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.before and context.main_eval and not context.blueprint and not context.retrigger_joker then
+            if context.scoring_name == "Three of a Kind" or context.scoring_name == "Straight" or context.scoring_name == "Flush" then
+                card.ability.extra.success = 1
+            end
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            if card.ability.extra.success == 1 then 
+                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                return {
+                    message = "SUCCESS!",
+                    colour = G.C.MONEY
+                }
+            else
+                if card.ability.extra.cookie - card.ability.extra.cookie_loss <= 0 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    return {
+                        message = "FAILED!",
+                        colour = G.C.RED
+                    }
+                else
+                    card.ability.extra.cookie = card.ability.extra.cookie - card.ability.extra.cookie_loss
+                    return {
+                        message = "CRACKED...",
+                        colour = G.C.RED
+                    }
+                end
+            end
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
 }
 
 SMODS.Joker{ -- Dalgona Star
@@ -353,12 +433,52 @@ SMODS.Joker{ -- Dalgona Star
     rarity = 2,
     cost = 0,
     pos = {x = 8, y = 0},
-    config = { extra = {} },
+    config = { extra = { xmult = 1, xmult_gain = 0.25, success = 0, cookie = 3, cookie_needed = 3, cookie_loss = 1 } },
     pools = { Food = true },
 
     in_pool = function(self, args)
         return false
     end,
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain, card.ability.extra.cookie, card.ability.extra.cookie_needed } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.before and context.main_eval and not context.blueprint and not context.retrigger_joker then
+            if context.scoring_name == "Full House" or context.scoring_name == "Four of a Kind" or context.scoring_name == "Straight Flush" then
+                card.ability.extra.success = 1
+            end
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            if card.ability.extra.success == 1 then 
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+                return {
+                    message = "SUCCESS!",
+                    colour = G.C.MONEY
+                }
+            else
+                if card.ability.extra.cookie - card.ability.extra.cookie_loss <= 0 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    return {
+                        message = "FAILED!",
+                        colour = G.C.RED
+                    }
+                else
+                    card.ability.extra.cookie = card.ability.extra.cookie - card.ability.extra.cookie_loss
+                    return {
+                        message = "CRACKED...",
+                        colour = G.C.RED
+                    }
+                end
+            end
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end
 }
 
 SMODS.Joker{ -- Dalgona Umbrella
@@ -371,12 +491,52 @@ SMODS.Joker{ -- Dalgona Umbrella
     rarity = 2,
     cost = 0,
     pos = {x = 9, y = 0},
-    config = { extra = {} },
+    config = { extra = { xmult = 1, xmult_gain = 1, success = 0, cookie = 3, cookie_needed = 3, cookie_loss = 1 } },
     pools = { Food = true },
 
     in_pool = function(self, args)
         return false
     end,
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain, card.ability.extra.cookie, card.ability.extra.cookie_needed } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.before and context.main_eval and not context.blueprint and not context.retrigger_joker then
+            if context.scoring_name == "Five of a Kind" or context.scoring_name == "Flush House" or context.scoring_name == "Flush Five" then
+                card.ability.extra.success = 1
+            end
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            if card.ability.extra.success == 1 then 
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+                return {
+                    message = "SUCCESS!",
+                    colour = G.C.MONEY
+                }
+            else
+                if card.ability.extra.cookie - card.ability.extra.cookie_loss <= 0 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    return {
+                        message = "FAILED!",
+                        colour = G.C.RED
+                    }
+                else
+                    card.ability.extra.cookie = card.ability.extra.cookie - card.ability.extra.cookie_loss
+                    return {
+                        message = "CRACKED...",
+                        colour = G.C.RED
+                    }
+                end
+            end
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end
 }
 
 SMODS.Joker{ -- Human Torch

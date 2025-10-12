@@ -93,25 +93,7 @@ SMODS.Joker{ -- Pear
     calculate = function(self, card, context)
         if context.after and context.main_eval and not context.blueprint and context.scoring_name == "Pair" then
             if card.ability.extra.pear - card.ability.extra.pear_loss <= 0 then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        play_sound('tarot1')
-                        card.T.r = -0.2
-                        card:juice_up(0.3, 0.4)
-                        card.states.drag.is = true
-                        card.children.center.pinch.x = true
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.3,
-                            blockable = false,
-                            func = function()
-                                card:remove()
-                                return true
-                            end
-                        }))
-                        return true
-                    end
-                }))
+                SMODS.destroy_cards(card, nil, nil, true)
                 G.GAME.pool_flags.nic_pear_gone = true
                 return {
                     message = "NOM :(",
@@ -157,25 +139,7 @@ SMODS.Joker{ -- Pearto
     calculate = function(self, card, context)
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
             if SMODS.pseudorandom_probability(card, ('j_nic_pearto'), 1, card.ability.extra.odds) then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        play_sound('tarot1')
-                        card.T.r = -0.2
-                        card:juice_up(0.3, 0.4)
-                        card.states.drag.is = true
-                        card.children.center.pinch.x = true
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.3,
-                            blockable = false,
-                            func = function()
-                                card:remove()
-                                return true
-                            end
-                        }))
-                        return true
-                    end
-                }))
+                SMODS.destroy_cards(card, nil, nil, true)
                 return {
                     message = "NOM :(",
                     colour = HEX("e15d73")
