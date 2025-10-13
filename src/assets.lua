@@ -136,3 +136,13 @@ SMODS.Sound{ -- Win
     key = "win",
     path = "win.ogg",
 }
+
+SMODS.Sound{ -- XP Level Up
+    key = "xplevelup",
+    path = "xplevelup.ogg",
+}
+
+SMODS.Sound{ -- XP Orb
+    key = "xporb",
+    path = "xporb.ogg",
+}

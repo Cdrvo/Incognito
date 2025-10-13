@@ -254,11 +254,20 @@ return {
             j_nic_scenario = {
                 name = "Scenario",
                 text = {
+                    "Earn {C:money}$5{} when you beat",
+                    "a {C:attention}Blind{} with at least",
+                    "one {V:1}#1#{} Joker",
+                    "{C:inactive,s:0.8}This Joker doesn't count and",
+                    "{C:inactive,s:0.8}Rarity changes when successful",
+
                 }
             },
             j_nic_mending = {
                 name = "Mending",
                 text = {
+                    "Any {C:attention}playing card",
+                    "{C:red}destroyed{} gets copied",
+                    "into the discard pile",
                 }
             },
             j_nic_calligramjoker = {
@@ -545,7 +554,10 @@ return {
         achievement_descriptions={},
         achievement_names={},
         blind_states={},
-        challenge_names={},
+        challenge_names={
+            c_nic_incognito = "OOPS? ALL SWOONS!",
+            c_nic_machinedramon = "THE FUTURE WILL BE PAVED WITH METAL!",
+        },
         collabs={},
         dictionary={
             k_nic_incognito = "Incognito",
@@ -585,6 +597,19 @@ return {
             nic_tetoactive = "Mesmerized!",
             nic_tetoinactive = "No Luck! No Hope!",
         },
-        v_text={},
+        v_text={
+            ch_c_nic_incognito1 = {
+                "You have {C:clubs}Clubs{}, {C:hearts}Hearts{}, {C:diamonds}Diamonds{}"
+            },
+            ch_c_nic_incognito2 = {
+                "But you don't have any {C:spades}Spades{}"
+            },
+            ch_c_nic_incognito3 = {
+                "Let's see how {C:spades}Incognito{} you are"
+            },
+            ch_c_nic_machinedramon1 = {
+                "MACHINEDRAMON"
+            },
+        },
     },
 }

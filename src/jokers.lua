@@ -942,8 +942,8 @@ SMODS.Joker{ -- Ratio Technique
     unlocked = true,
     discovered = true,
     atlas = 'nicjokers',
-    rarity = 1,
-    cost = 5,
+    rarity = 2,
+    cost = 6,
     pos = {x = 8, y = 1},
     config = { extra = { ratio = 0, ratio_display = "Nothing", rank = "" } },
 
@@ -1308,12 +1308,49 @@ SMODS.Joker { -- Scenario
     rarity = 2,
     cost = 5,
     pos = {x = 7, y = 2},
+    config = { extra = { rarity = "Common" } },
 
     draw = function(self, card, layer)
         if card.config.center.discovered or card.bypass_discovery_center then
             card.children.center:draw_shader('hologram', nil, card.ARGS.send_to_shader)
         end
     end,
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { colours = { G.C.RARITY[card.ability.extra.rarity] }, localize('k_' .. card.ability.extra.rarity:lower()) } }
+    end,
+
+    calc_dollar_bonus = function(self, card)
+        return card.ability.extra.dollars
+    end,
+
+    calculate = function(self, card, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            local has_rarity = false 
+            if G.jokers then
+                for _, joker_card in ipairs(G.jokers.cards) do
+                    if joker_card ~= card and joker_card:is_rarity(card.ability.extra.rarity) then
+                        has_rarity = true
+                        break
+                    end
+                end
+            end
+            if has_rarity then
+                card.ability.extra.rarity = (pseudorandom_element(SMODS.Rarities, 'nic_scenario').key)
+                card.ability.extra.dollars = 5
+                return {
+                    message = "SUCCESS!",
+                    colour = G.C.MONEY
+                }
+            else
+                card.ability.extra.dollars = 0
+                return {
+                    message = "FAILED!",
+                    colour = G.C.RED
+                }
+            end
+        end
+    end
 }
 
 SMODS.Joker { -- Mending
@@ -1326,6 +1363,28 @@ SMODS.Joker { -- Mending
     rarity = 3,
     cost = 10,
     pos = {x = 8, y = 2},
+
+    calculate = function(self, card, context)
+		if context.remove_playing_cards and context.removed then
+            for i = 1, #context.removed do
+                local repair_card = copy_card(context.removed[i], nil, nil, G.playing_card)
+                table.insert(G.playing_cards, repair_card)
+                G.discard:emplace(repair_card)
+            end
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    if #context.removed == 1 then
+                        play_sound("nic_xporb", 0.96 + math.random() * 0.08)
+                        card:juice_up(0.5, 0.5)
+                    else
+                        play_sound("nic_xplevelup", 0.96 + math.random() * 0.08)
+                        card:juice_up(0.5, 0.5)
+                    end
+                    return true
+                end
+            }))
+        end
+    end
 }
 
 SMODS.Joker { -- Calligram Joker
