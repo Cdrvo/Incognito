@@ -273,11 +273,21 @@ return {
             j_nic_calligramjoker = {
                 name = "Calligram Joker",
                 text = {
+                    "{C:mult}+#1#{} Mult for each",
+                    "{C:attention}J, O, K, E, R{} in",
+                    "adjacent Joker's name",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 }
             },
             j_nic_cloverpit = {
                 name = "Clover Pit",
                 text = {
+                    "When {C:attention}Clicked or Space{} is",
+                    "Pressed, spend {C:money}$#1#{} and get",
+                    "between {C:mult}#2#{} to {C:mult}#3#{} Mult",
+                    "{C:inactive}(Currently {C:mult}#4##5#{C:inactive} Mult)",
+                    "{C:inactive,s:0.8}Value doubles after {C:attention,s:0.8}Boss Blind",
+                    "{C:inactive,s:0.8}and current Mult resets",
                 }
             },
             j_nic_cuphead = {

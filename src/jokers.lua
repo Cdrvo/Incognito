@@ -1136,30 +1136,6 @@ SMODS.Joker{ -- Cyan
     end
 }
 
-SMODS.Joker { -- Inc
-    key = "inc",
-    blueprint_compat = true,
-    eternal_compat = true,
-    unlocked = true,
-    discovered = false,
-    atlas = 'nicjokers',
-    rarity = 2,
-    cost = 3,
-    pos = {x = 2, y = 2},
-}
-
-SMODS.Joker { -- Invert
-    key = "invert",
-    blueprint_compat = true,
-    eternal_compat = true,
-    unlocked = true,
-    discovered = false,
-    atlas = 'nicjokers',
-    rarity = 2,
-    cost = 3,
-    pos = {x = 3, y = 2},
-}
-
 SMODS.Joker { -- Astromancer
     key = "astromancer",
     blueprint_compat = true,
@@ -1397,6 +1373,84 @@ SMODS.Joker { -- Calligram Joker
     rarity = 2,
     cost = 5,
     pos = {x = 9, y = 2},
+    config = { extra = { mult = 1 } },
+
+    loc_vars = function(self, info_queue, card)
+        local my_pos = nil
+        local letter_count = 0
+        if G.jokers then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    my_pos = i
+                    break
+                end
+            end
+        end
+        if my_pos and G.jokers.cards[my_pos - 1] then
+            local joker_name = G.localization.descriptions.Joker[G.jokers.cards[my_pos - 1].config.center.key].name
+            if joker_name then
+                for i = 1, #joker_name do
+                    local letters = joker_name:sub(i,i)
+                    if letters == "j" or letters == "o" or letters == "k" or letters == "e" or letters == "r" or 
+                    letters == "J" or letters == "O" or letters == "K" or letters == "E" or letters == "R" then
+                        letter_count = letter_count + 1
+                    end
+                end
+            end
+        end
+        if my_pos and G.jokers.cards[my_pos + 1] then
+            local joker_name = G.localization.descriptions.Joker[G.jokers.cards[my_pos + 1].config.center.key].name
+            if joker_name then
+                for i = 1, #joker_name do
+                    local letters = joker_name:sub(i,i)
+                    if letters == "j" or letters == "o" or letters == "k" or letters == "e" or letters == "r" or 
+                    letters == "J" or letters == "O" or letters == "K" or letters == "E" or letters == "R" then
+                        letter_count = letter_count + 1
+                    end
+                end
+            end
+        end
+        return { vars = { card.ability.extra.mult, letter_count * card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local my_pos = nil
+            local letter_count = 0
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    my_pos = i
+                    break
+                end
+            end
+            if my_pos and G.jokers.cards[my_pos - 1] then
+                local joker_name = G.localization.descriptions.Joker[G.jokers.cards[my_pos - 1].config.center.key].name
+                if joker_name then
+                    for i = 1, #joker_name do
+                        local letters = joker_name:sub(i,i)
+                        if letters == "j" or letters == "o" or letters == "k" or letters == "e" or letters == "r" or 
+                        letters == "J" or letters == "O" or letters == "K" or letters == "E" or letters == "R" then
+                            letter_count = letter_count + 1
+                        end
+                    end
+                end
+            end
+            if my_pos and G.jokers.cards[my_pos + 1] then
+            local joker_name = G.localization.descriptions.Joker[G.jokers.cards[my_pos + 1].config.center.key].name
+            if joker_name then
+                for i = 1, #joker_name do
+                    local letters = joker_name:sub(i,i)
+                    if letters == "j" or letters == "o" or letters == "k" or letters == "e" or letters == "r" or 
+                    letters == "J" or letters == "O" or letters == "K" or letters == "E" or letters == "R" then
+                        letter_count = letter_count + 1
+                    end
+                end
+            end
+        end
+            return {
+                mult = letter_count * card.ability.extra.mult
+            }
+        end
+    end
 }
 
 SMODS.Joker { -- Clover Pit
@@ -1409,18 +1463,37 @@ SMODS.Joker { -- Clover Pit
     rarity = 2,
     cost = 5,
     pos = {x = 0, y = 3},
-}
+    config = { extra = { dollars_loss = 1, min = -5 , max = 10, mult = 0 } },
 
+    loc_vars = function(self, info_queue, card)
+        local symbol = "+"
+        if card.ability.extra.mult < 0 then
+            symbol = ""
+        else
+            symbol = "+"
+        end
+        return { vars = { card.ability.extra.dollars_loss, card.ability.extra.min, card.ability.extra.max, symbol, card.ability.extra.mult } }
+    end,
 
-SMODS.Joker { -- Cuphead
-    key = "cuphead",
-    blueprint_compat = true,
-    eternal_compat = true,
-    unlocked = true,
-    discovered = false,
-    atlas = 'nicjokers',
-    rarity = 2,
-    cost = 5,
-    pos = {x = 1, y = 3},
-    pixel_size = { h = 95 / 1.2 },
+    calculate = function(self, card, context)
+        if (context.key_press_space or (context.cry_press and card.states.hover.is == true)) and (G.GAME.dollars > (card.ability.extra.dollars_loss - 1)) then
+            ease_dollars(-card.ability.extra.dollars_loss, true)
+            card.ability.extra.mult = pseudorandom('j_nic_cloverpit', card.ability.extra.min, card.ability.extra.max)
+            card:juice_up(0.5, 0.5)
+            return {
+                message = "LETS GO GAMBLING!",
+                colour = G.C.RED
+            }
+        end
+        if context.end_of_round and G.GAME.blind.boss and context.game_over == false and context.main_eval and not context.blueprint then
+            card.ability.extra.dollars_loss = card.ability.extra.dollars_loss * 2
+            card.ability.extra.min = card.ability.extra.min * 2
+            card.ability.extra.max = card.ability.extra.max * 2
+            card.ability.extra.mult = 0
+            return {
+                message = "LEVEL UP!",
+                colour = G.C.RED
+            }
+        end
+    end
 }
