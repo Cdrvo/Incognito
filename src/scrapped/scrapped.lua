@@ -104,6 +104,30 @@ SMODS.Joker{ -- The True Fibonacci Sequence
     end
 }
 
+SMODS.Joker { -- Inc
+    key = "inc",
+    blueprint_compat = true,
+    eternal_compat = true,
+    unlocked = true,
+    discovered = false,
+    atlas = 'nicjokers',
+    rarity = 2,
+    cost = 3,
+    pos = {x = 2, y = 2},
+}
+
+SMODS.Joker { -- Invert
+    key = "invert",
+    blueprint_compat = true,
+    eternal_compat = true,
+    unlocked = true,
+    discovered = false,
+    atlas = 'nicjokers',
+    rarity = 2,
+    cost = 3,
+    pos = {x = 3, y = 2},
+}
+
 SMODS.Consumable {
     discovered = true,
     key = 'newmoon',

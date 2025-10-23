@@ -128,7 +128,7 @@ return {
             j_nic_invisiblewoman = {
                 name = "Invisible Woman",
                 text = {
-                    "If {C:attention}first played{} is a {C:attention}Four of {C:attention}a kind with", 
+                    "If {C:attention}first played{} is a {C:attention}Four of a Kind{} with", 
                     "exactly {C:attention}4{} cards, turns all cards into glass",
                     "{C:inactive,s:0.8}Glass cards have a higher chance to break",
                 }
@@ -293,6 +293,16 @@ return {
             j_nic_cuphead = {
                 name = "Cuphead",
                 text = {
+                    {" Each played {C:hearts}Heart{} cards ",
+                    "increases {C:attention}Super Meter",
+                    "{C:inactive}Super Meter: {V:1}#1# {V:2}#2# {V:3}#3# {V:4}#4# {V:5}#5#"},
+                    {"Played hand that doesn't",
+                    "contain {C:hearts}Heart{} cards",
+                    "uses the {C:attention}Super Meter"},
+                    {"{C:hearts}Extra Parry{} increase",
+                    "Mult by {C:mult}+#8#{} Mult",
+                    "{C:inactive}Each EX does {C:mult}+#6#{C:inactive} Mult",
+                    "{C:inactive}SUPER EX does {C:mult}+#7#{C:inactive} Mult"},
                 }
             },
             

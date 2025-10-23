@@ -753,7 +753,7 @@ SMODS.Joker{ -- Incognito
     
     calculate = function(self, card, context)
         if context.destroy_card and context.destroy_card.should_destroy and not context.blueprint then
-            return { remove = true, colour = HEX("d0d0d0") }
+            return { remove = true, colour = G.C.SUITS.Spades }
         end
 
         if context.remove_playing_cards and not context.blueprint then
@@ -767,7 +767,7 @@ SMODS.Joker{ -- Incognito
                 card.ability.extra.xmult = card.ability.extra.xmult + (spades_cards * card.ability.extra.xmult_gain)
                 return {
                     message = "+X" .. spades_cards .. " MULT!",
-                    colour = HEX("d0d0d0"),
+                    colour = G.C.SUITS.Spades,
                 }
             end
         end
@@ -776,9 +776,9 @@ SMODS.Joker{ -- Incognito
             if not (context.other_card.base.suit == "Spades") then
                 if SMODS.pseudorandom_probability(card, ('j_nic_incognito'), 1, card.ability.extra.odds) then
                     context.other_card.should_destroy = true
-                    return { message = "SWOON!", colour = HEX("d0d0d0") }
+                    return { message = "SWOON!", colour = G.C.SUITS.Spades }
                 else
-                    return { message = "NOPE!", colour = HEX("d0d0d0") }
+                    return { message = "NOPE!", colour = G.C.SUITS.Spades }
                 end
             end
         end  
@@ -1136,30 +1136,6 @@ SMODS.Joker{ -- Cyan
             end
         end
     end
-}
-
-SMODS.Joker { -- Inc
-    key = "inc",
-    blueprint_compat = true,
-    eternal_compat = true,
-    unlocked = true,
-    discovered = false,
-    atlas = 'nicjokers',
-    rarity = 2,
-    cost = 3,
-    pos = {x = 2, y = 2},
-}
-
-SMODS.Joker { -- Invert
-    key = "invert",
-    blueprint_compat = true,
-    eternal_compat = true,
-    unlocked = true,
-    discovered = false,
-    atlas = 'nicjokers',
-    rarity = 2,
-    cost = 3,
-    pos = {x = 3, y = 2},
 }
 
 SMODS.Joker { -- Astromancer
@@ -1540,4 +1516,76 @@ SMODS.Joker { -- Cuphead
     cost = 5,
     pos = {x = 1, y = 3},
     pixel_size = { h = 95 / 1.2 },
+    config = { extra = { parry = 0, mult = 10, mult_gain = 1 } },
+
+    loc_vars = function(self, info_queue, card)
+        local card1 = "*"
+        local card2 = "*"
+        local card3 = "*"
+        local card4 = "*"
+        local card5 = "*"
+        local colour1 = G.C.UI.TEXT_INACTIVE
+        local colour2 = G.C.UI.TEXT_INACTIVE
+        local colour3 = G.C.UI.TEXT_INACTIVE
+        local colour4 = G.C.UI.TEXT_INACTIVE
+        local colour5 = G.C.UI.TEXT_INACTIVE
+        if card.ability.extra.parry > 0 then card1 = "[]" colour1 = G.C.SUITS.Hearts else card1 = "*" colour1 = G.C.UI.TEXT_INACTIVE end
+        if card.ability.extra.parry > 1 then card2 = "[]" colour2 = G.C.SUITS.Hearts else card2 = "*" colour2 = G.C.UI.TEXT_INACTIVE end
+        if card.ability.extra.parry > 2 then card3 = "[]" colour3 = G.C.SUITS.Hearts else card3 = "*" colour3 = G.C.UI.TEXT_INACTIVE end
+        if card.ability.extra.parry > 3 then card4 = "[]" colour4 = G.C.SUITS.Hearts else card4 = "*" colour4 = G.C.UI.TEXT_INACTIVE end
+        if card.ability.extra.parry > 4 then card5 = "[]" colour5 = G.C.SUITS.Hearts else card5 = "*" colour5 = G.C.UI.TEXT_INACTIVE end
+        return { vars = { colours = { colour1, colour2, colour3, colour4, colour5 }, card1, card2, card3, card4, card5, card.ability.extra.mult, card.ability.extra.mult * 5, card.ability.extra.mult_gain } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and not context.blueprint and context.other_card:is_suit("Hearts") then
+            local parry = false
+            for i = 1, #context.scoring_hand do
+                if context.scoring_hand[i]:is_suit("Hearts") then
+                    parry = true
+                end
+            end
+            if parry then
+                if card.ability.extra.parry < 5 then
+                    card.ability.extra.parry = card.ability.extra.parry + 1
+                    return {
+                        message = "PARRY!",
+                        colour = G.C.SUITS.Hearts
+                    }
+                elseif card.ability.extra.parry == 5 then
+                    card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                    return {
+                        message = "EXTRA PARRY!",
+                        colour = G.C.SUITS.Hearts
+                    }
+                end
+            end
+        end
+        if context.joker_main then
+            local parry = false
+            for i = 1, #context.scoring_hand do
+                if context.scoring_hand[i]:is_suit("Hearts") then
+                    parry = true
+                end
+            end
+            if parry then
+            else
+                if card.ability.extra.parry == 5 then
+                    card.ability.extra.parry = 0
+                    return {
+                        message = "SUPER EX!",
+                        colour = G.C.SUITS.Hearts,
+                        mult = card.ability.extra.mult * 5
+                    }
+                elseif card.ability.extra.parry > 0 then
+                    card.ability.extra.parry = card.ability.extra.parry - 1
+                    return {
+                        message = "EX!",
+                        colour = G.C.SUITS.Hearts,
+                        mult = card.ability.extra.mult
+                    }
+                end
+            end
+        end
+    end
 }
