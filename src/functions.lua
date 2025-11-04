@@ -1,9 +1,9 @@
 -- Config
 
-local old_config = copy_table(Incognito.config)
+local old_config = copy_table(incognito.config)
 local function should_restart()
     for k, v in pairs(old_config) do
-        if v ~= Incognito.config[k] then
+        if v ~= incognito.config[k] then
             SMODS.full_restart = 1
             return
         end
@@ -11,7 +11,7 @@ local function should_restart()
     SMODS.full_restart = 0
 end
 
-Incognito.config_tab = function()
+incognito.config_tab = function()
     return {
         n = G.UIT.ROOT,
         config = { align = "cm", padding = 0.07, emboss = 0.05, r = 0.1, colour = G.C.BLACK, minh = 4.5, minw = 7 },
@@ -31,7 +31,7 @@ Incognito.config_tab = function()
                         nodes = {
                             create_toggle({
                                 label = "Scrapped Concepts [Mid]",
-                                ref_table = Incognito.config,
+                                ref_table = incognito.config,
                                 ref_value = "scrapped_things",
                                 callback = should_restart,
                             }),
@@ -122,29 +122,6 @@ function Card:redeem()
         SMODS.calculate_context({nic_buying_voucher = true, card = self})
     end
     return buyingcard.hooks.Card_redeem(self)
-end
-
--- Randomize Rank
-
-local function reset_nic_crazytaxi_card()
-    G.GAME.current_round.nic_crazytaxi_card = { rank = 'Ace' }
-    local valid_crazytaxi_card = {}
-    for _, playing_card in ipairs(G.playing_cards) do
-        if not SMODS.has_no_suit(playing_card) then
-            valid_crazytaxi_card[#valid_crazytaxi_card + 1] = playing_card
-        end
-    end
-    local crazytaxi_card = pseudorandom_element(valid_crazytaxi_card, 'nic_crazytaxi' .. G.GAME.round_resets.ante)
-    if crazytaxi_card then
-        G.GAME.current_round.nic_crazytaxi_card.rank = crazytaxi_card.base.value
-        G.GAME.current_round.nic_crazytaxi_card.id = crazytaxi_card.base.id
-    end
-end
-
--- Timer
-
-function SMODS.current_mod.reset_game_globals(run_start)
-    reset_nic_crazytaxi_card()
 end
 
 -- Cryptid

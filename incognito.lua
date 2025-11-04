@@ -1,7 +1,7 @@
-Incognito = SMODS.current_mod
+incognito = SMODS.current_mod
 assert(SMODS.load_file("config.lua"))()
 
-if Incognito.config.scrapped_things then
+if incognito.config.scrapped_things then
 	SMODS.load_file("src/scrapped/scrapped.lua")()
 end
 
