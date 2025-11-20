@@ -6,19 +6,19 @@ I FINALLY FINISHED RAHHHH
 # Contents
 
 ## Total of 45 Jokers:
-1 Common Joker
-17 Uncommon Jokers
-10 Rare Jokers
-2 Legendary Jokers
-15 Teto Jokers
+1 Common Joker\
+17 Uncommon Jokers\
+10 Rare Jokers\
+2 Legendary Jokers\
+15 Teto Jokers\
 
 ## 3 Challenge Runs:
-OOPS? ALL SWOONS!
-O0p$? @l- HAHAHA!
-THE FUTURE WILL BE PAVED WITH METAL!
+OOPS? ALL SWOONS!\
+O0p$? @l- HAHAHA!\
+THE FUTURE WILL BE PAVED WITH METAL!\
 
 ## Total of 1 Tarot:
-Tetarot
+Tetarot\
 
 ## Crossovers
 [Hyperfixation (only DEV)]([https://github.com/SpectralPack/Talisman](https://github.com/tomatoseandcrying/hyperfixation/tree/main))\
