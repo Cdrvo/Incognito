@@ -3,21 +3,21 @@
 
 I FINALLY FINISHED RAHHHH
 
-## Contents
+# Contents
 
-# Total of 45 Jokers:
+## Total of 45 Jokers:
 1 Common Joker
 17 Uncommon Jokers
 10 Rare Jokers
 2 Legendary Jokers
 15 Teto Jokers
 
-# 3 Challenge Runs:
+## 3 Challenge Runs:
 OOPS? ALL SWOONS!
 O0p$? @l- HAHAHA!
 THE FUTURE WILL BE PAVED WITH METAL!
 
-# Total of 1 Tarot:
+## Total of 1 Tarot:
 Tetarot
 
 ## Crossovers
