@@ -10,7 +10,7 @@ I FINALLY FINISHED RAHHHH
 17 Uncommon Jokers\
 10 Rare Jokers\
 2 Legendary Jokers\
-15 Teto Jokers\
+15 Teto Jokers
 
 ## 3 Challenge Runs:
 OOPS? ALL SWOONS!\
@@ -21,5 +21,5 @@ THE FUTURE WILL BE PAVED WITH METAL!
 Tetarot
 
 ## Crossovers
-[Hyperfixation (only DEV)]([https://github.com/SpectralPack/Talisman](https://github.com/tomatoseandcrying/hyperfixation/tree/main))\
-[GARBSHIT](https://github.com/Gainumki/GARBSHIT)\
+[Hyperfixation only DEV]([https://github.com/SpectralPack/Talisman](https://github.com/tomatoseandcrying/hyperfixation/tree/main))\
+[GARBSHIT](https://github.com/Gainumki/GARBSHIT)
