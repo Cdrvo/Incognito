@@ -935,7 +935,7 @@ SMODS.Joker{ -- Strawberry Cake
                 }
             end
         end
-        if context.individual and context.cardarea == G.play and next(context.poker_hands['Flush']) and not G.GAME.current_round.hands_played == 0 then
+        if context.individual and context.cardarea == G.play and next(context.poker_hands['Flush']) and G.GAME.current_round.hands_played ~= 0 then
             context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
             return {
                 message = "+Mult <3",

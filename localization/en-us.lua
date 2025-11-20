@@ -29,7 +29,7 @@ return {
                 text = {
                     {"At end of round, all non {C:attention}Enhanced cards{}",
                     "held in hand turn into {C:attention}Steel{} cards"},
-                    {"Played {C:attention}Steel{} cards get destroyed",
+                    {"Scored {C:attention}Steel{} cards get destroyed",
                     "and gains {C:mult}+15{} Mult and {X:mult,C:white}X0.5{} Mult",
                     "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult and {X:mult,C:white} X#2# {C:inactive} Mult)"},
                 }
@@ -405,8 +405,9 @@ return {
             j_nic_mesmerizerteto = { 
                 name = "Mesmerizer Teto",
                 text = {
-                    "Retrigger leftmost {C:inc_teto}Teto",
-                    "Joker {C:attention}#1#{} additional times",
+                    "If leftmost {C:attention}Joker{} is",
+                    "a {C:inc_teto}Teto{}, retrigger it",
+                    "{C:attention}#1#{} additional times",
                     "{C:inactive,s:0.8,E:1}Song By: 32ki",
                 }
             },
