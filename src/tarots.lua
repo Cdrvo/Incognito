@@ -6,6 +6,7 @@ SMODS.Consumable {
     pos = {x = 0, y = 0 },
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = "nic_tetosticker", set = "Other" }
         return { vars = { colours = { HEX('e15d73') }} }
     end, 
 
