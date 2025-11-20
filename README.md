@@ -21,5 +21,5 @@ THE FUTURE WILL BE PAVED WITH METAL!
 Tetarot
 
 ## Crossovers
-[Hyperfixation (Only DEV)]((https://github.com/tomatoseandcrying/hyperfixation/tree/main))\
+[Hyperfixation (Only DEV)](https://github.com/tomatoseandcrying/hyperfixation/tree/main)\
 [GARBSHIT](https://github.com/Gainumki/GARBSHIT)
