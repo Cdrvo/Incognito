@@ -82,7 +82,7 @@ end
 
 -- Cards are Considered Rank
 
-local getiduse = false
+--[[local getiduse = false
 local getidref = Card.get_id
 function Card:get_id()
 	if not getiduse then
@@ -95,7 +95,7 @@ function Card:get_id()
 		getiduse = false
 		return getidref(self)
 	end
-end
+end]]
 
 -- Vouchers/Boosters
 

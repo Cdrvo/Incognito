@@ -78,6 +78,84 @@ SMODS.Challenge { -- OOPS? ALL SWOONS!
     }
 }
 
+SMODS.Challenge { -- OOPS? ALL HAHAHA!
+    key = 'invert',
+    rules = {
+        custom = {
+            { id = "nic_invert1" },
+        },
+        modifiers = {
+            { id = 'joker_slots', value = 3 },
+            { id = 'hands', value = 3 },
+        },
+    },
+    jokers = {
+        { id = 'j_nic_invert', eternal = true, edition = 'negative' },
+        { id = 'j_oops', eternal = true, edition = 'negative' },
+        { id = 'j_oops', eternal = true, edition = 'negative' },
+        { id = 'j_oops', eternal = true, edition = 'negative' },
+    },
+    restrictions = {
+        banned_cards = {
+            { id = 'j_gros_michel' },
+            { id = 'j_cavendish' },
+            { id = 'j_8_ball' },
+            { id = 'j_business' },
+            { id = 'j_space' },
+            { id = 'j_hallucination' },
+            { id = 'j_reserved_parking' },
+            { id = 'j_lucky_cat' },
+            { id = 'j_bloodstone' },
+            { id = 'c_wheel_of_fortune' },
+            { id = 'c_temperance' },
+            { id = 'c_soul' },
+        }
+    },
+    deck = {
+        cards = {
+            { s = 'S', r = 'A' },
+            { s = 'S', r = 'A' },
+            { s = 'S', r = 'A' },
+            { s = 'S', r = 'K' },
+            { s = 'S', r = 'K' },
+            { s = 'S', r = 'K' },
+            { s = 'S', r = 'Q' },
+            { s = 'S', r = 'Q' },
+            { s = 'S', r = 'Q' },
+            { s = 'S', r = 'J' },
+            { s = 'S', r = 'J' },
+            { s = 'S', r = 'J' },
+            { s = 'S', r = 'T' },
+            { s = 'S', r = 'T' },
+            { s = 'S', r = 'T' },
+            { s = 'S', r = '9' },
+            { s = 'S', r = '9' },
+            { s = 'S', r = '9' },
+            { s = 'S', r = '8' },
+            { s = 'S', r = '8' },
+            { s = 'S', r = '8' },
+            { s = 'S', r = '7' },
+            { s = 'S', r = '7' },
+            { s = 'S', r = '7' },
+            { s = 'S', r = '6' },
+            { s = 'S', r = '6' },
+            { s = 'S', r = '6' },
+            { s = 'S', r = '5' },
+            { s = 'S', r = '5' },
+            { s = 'S', r = '5' },
+            { s = 'S', r = '4' },
+            { s = 'S', r = '4' },
+            { s = 'S', r = '4' },
+            { s = 'S', r = '3' },
+            { s = 'S', r = '3' },
+            { s = 'S', r = '3' },
+            { s = 'S', r = '2' },
+            { s = 'S', r = '2' },
+            { s = 'S', r = '2' },
+        }
+    }
+}
+
 SMODS.Challenge { -- THE FUTURE WILL BE PAVED WITH METAL!
     key = 'machinedramon',
     rules = {

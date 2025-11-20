@@ -1296,7 +1296,7 @@ SMODS.Joker { -- Scenario
     rarity = 2,
     cost = 5,
     pos = {x = 5, y = 2},
-    config = { extra = { rarity = "Common" } },
+    config = { extra = { rarity = "Common", dollars = 0 } },
 
     draw = function(self, card, layer)
         if card.config.center.discovered or card.bypass_discovery_center then

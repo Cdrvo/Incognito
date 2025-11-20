@@ -174,6 +174,20 @@ SMODS.Joker{ -- Doctor Kidori
     pos = {x = 4, y = 0},
     config = { extra = {} },
     pools = { ["Teto"] = true },
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == 4 then
+            local other_card = context.other_card
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    other_card:juice_up()
+                    play_sound('tarot1')
+                    other_card:set_edition(SMODS.poll_edition { guaranteed = true }, nil, true)
+                    return true
+                end
+            }))
+        end
+    end
 }
 
 SMODS.Joker{ -- Birdbrain Teto
@@ -314,7 +328,7 @@ SMODS.Joker{ -- Teto Word Of The Day
                 }
             end
         end
-        if context.end_of_round and G.GAME.blind.boss and context.game_over == false and context.main_eval and not context.blueprint then
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
             if card.ability.extra.teto ~= card.ability.extra.teto_rounds then
                 card.ability.extra.teto = card.ability.extra.teto + 1
                 if card.ability.extra.teto == card.ability.extra.teto_rounds then
@@ -473,7 +487,7 @@ SMODS.Joker{ -- Tetoris
     rarity = "nic_teto",
     cost = 5,
     pos = {x = 1, y = 2},
-    config = { extra = { hearts = 10, hearts_needed = 10, hearts_loss = 1 } },
+    config = { extra = { hearts = 5, hearts_needed = 5, hearts_loss = 1 } },
     pools = { ["Teto"] = true },
 
     loc_vars = function(self, info_queue, card)

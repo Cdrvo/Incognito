@@ -148,7 +148,7 @@ return {
                 text = {
                     {"All {C:attention}played hands{} with exactly {C:attention}4",
                     "cards are considered {C:attention}Four of a Kind",
-                    "and the {C:attention}cards{} will count in scoring"},
+                    "and the {C:attention}cards{} will count when played"},
                     {"Every {C:blue}Fantastic{} Joker {C:attention}played hands",
                     "condition can be {C:attention}played whenever"},
                 }
@@ -361,8 +361,8 @@ return {
             j_nic_doctorkidori = {
                 name = "Doctor Kidori",
                 text = {
-                    "All cards are",
-                    "considered {C:attention}4{}",
+                    "All played {C:attention}4s", 
+                    "changes {C:dark_edition}Edition",
                     "{C:inactive,s:0.8,E:1}Song By: {C:inactive,f:5,s:0.8,E:1}原口沙輔",
                     "{C:inactive,s:0.8,E:1} Hako, Sasuke Haraguchi",
                 }
@@ -396,8 +396,8 @@ return {
             j_nic_tetowordoftheday = { 
                 name = "Teto Word Of The Day",
                 text = {
-                    "After {C:attention}#2# Boss Blind{} rounds,",
-                    "sell this card to {C:attention}Create",
+                    "After {C:attention}#2# Blinds{}, sell",
+                    "this card to {C:attention}Create",
                     "a random {C:inc_teto}Teto{} Joker",
                     "{C:inactive,s:0.8}(Must have room)",
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)",
@@ -455,7 +455,7 @@ return {
                 text = {
                     "All {C:attention}Enhanced {C:hearts}Heart{} cards ",
                     "in your {C:attention}full deck{} changes",
-                    "{C:attention}Enhancment{} after scoring",
+                    "{C:attention}Enhancment{} after played",
                     "{C:inactive,s:0.8,E:1}Song By: darkbluecat",
                 }
             },
@@ -592,6 +592,7 @@ return {
         blind_states={},
         challenge_names={
             c_nic_incognito = "OOPS? ALL SWOONS!",
+            c_nic_invert = "O0p$? @l- HAHAHA!",
             c_nic_machinedramon = "THE FUTURE WILL BE PAVED WITH METAL!",
         },
         collabs={},
@@ -634,18 +635,11 @@ return {
             nic_tetoinactive = "No Luck! No Hope!",
         },
         v_text={
-            ch_c_nic_incognito1 = {
-                "You have {C:clubs}Clubs{}, {C:hearts}Hearts{}, {C:diamonds}Diamonds{}"
-            },
-            ch_c_nic_incognito2 = {
-                "But you don't have any {C:spades}Spades{}"
-            },
-            ch_c_nic_incognito3 = {
-                "Let's see how {C:spades}Incognito{} you are"
-            },
-            ch_c_nic_machinedramon1 = {
-                "MACHINEDRAMON"
-            },
+            ch_c_nic_incognito1 = { "You have {C:clubs}Clubs{}, {C:hearts}Hearts{}, {C:diamonds}Diamonds{}" },
+            ch_c_nic_incognito2 = { "But you don't have any {C:spades}Spades{}" },
+            ch_c_nic_incognito3 = { "Let's see how {C:spades}Incognito{} you are" },
+            ch_c_nic_invert1 = { "{C:dark_edition}HAHAHAHAHAHAHAHAHAHAHA"},
+            ch_c_nic_machinedramon1 = { "MACHINEDRAMON" },
         },
     },
 }
