@@ -34,6 +34,6 @@ SMODS.Consumable {
     end,
 
     can_use = function (self, card) 
-        return #G.jokers.highlighted > 0 and G.jokers.highlighted[1].config.center.rarity ~= "nic_teto" and not G.jokers.cards[1].ability.nic_tetosticker
+        return #G.jokers.highlighted > 0 and G.jokers.highlighted[1].config.center.rarity ~= "nic_teto" and not G.jokers.highlighted[1].ability.nic_tetosticker
     end,
 }
