@@ -158,7 +158,7 @@ end
 
 -- Retrigger Jokers
 
-SMODS.current_mod.optional_features = { cardareas = {}, retrigger_joker = true }
+SMODS.current_mod.optional_features = { cardareas = {}, retrigger_joker = true, post_trigger = true }
 
 -- Teto Colour
 

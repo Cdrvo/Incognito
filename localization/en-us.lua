@@ -323,6 +323,20 @@ return {
                     "{C:spades}Spade{} cards get destroyed when played"},
                 }
             },
+            j_nic_solareclipse = {
+                name = "Solar Eclipse",
+                text = {
+                    {"Scored based on",
+                    "most used {C:tarot}Tarot{},",
+                    "If tied uses both"},
+                    {"Gains {C:mult}+#3#{} Mult every",
+                    "time {C:tarot}The Sun{} is used",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"},
+                    {"Gains {C:chips}+#4#{} Chips every",
+                    "time {C:tarot}The Moon{} is used",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"},
+                }
+            },
             
             -- Teto
 

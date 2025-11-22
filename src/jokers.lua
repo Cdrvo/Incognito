@@ -1987,3 +1987,64 @@ SMODS.Joker{ -- Invert
         end
     end
 }
+
+SMODS.Joker{ -- Solar Eclipse
+    key = "solareclipse",
+    blueprint_compat = true,
+    eternal_compat = true,
+    unlocked = true,
+    discovered = false,
+    atlas = 'nicjokers',
+    rarity = 2,
+    cost = 7,
+    pos = {x = 3, y = 3},
+    config = { extra = { sun = 0, moon = 0, mult = 0, chips = 0, mult_gain = 2, chips_gain = 10 } },
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.c_sun
+        info_queue[#info_queue + 1] = G.P_CENTERS.c_moon
+        return { vars = { card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.mult_gain, card.ability.extra.chips_gain } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.using_consumeable and not context.blueprint then
+            if context.consumeable.config.center.key == 'c_sun' then
+                card.ability.extra.sun = card.ability.extra.sun + 1
+                card.ability.extra.mult = (card.ability.extra.sun * card.ability.extra.mult_gain)
+            end
+            if context.consumeable.config.center.key == 'c_moon' then
+                card.ability.extra.moon = card.ability.extra.moon + 1
+                card.ability.extra.chips = (card.ability.extra.moon * card.ability.extra.chips_gain)
+            end
+            card:juice_up(0.5, 0.5)
+            if card.ability.extra.sun == card.ability.extra.moon then
+                card.children.center:set_sprite_pos({x = 3, y = 3})
+            end
+            if card.ability.extra.sun > card.ability.extra.moon then
+                card.children.center:set_sprite_pos({x = 4, y = 3})
+            end
+            if card.ability.extra.sun < card.ability.extra.moon then
+                card.children.center:set_sprite_pos({x = 5, y = 3})
+            end
+        end
+
+        if context.joker_main then
+            if card.ability.extra.sun == card.ability.extra.moon then
+                return { 
+                    mult = card.ability.extra.mult,
+                    chips = card.ability.extra.chips,
+                }
+            end
+            if card.ability.extra.sun > card.ability.extra.moon then
+                return { 
+                    mult = card.ability.extra.mult,
+                }
+            end
+            if card.ability.extra.sun < card.ability.extra.moon then
+                return { 
+                    chips = card.ability.extra.chips,
+                }
+            end
+        end
+    end
+}
