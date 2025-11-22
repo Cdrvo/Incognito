@@ -54,7 +54,7 @@ return {
                     "{C:inactive}(Currently: #3#)"},
                 }
             },
-            j_nic_stalagmite = { -- Rare
+            j_nic_stalagmite = {
                 name = "Stalagmite",
                 text = {
                     {"Played {C:attention}Stone{} card turns {C:dark_edition}Negative",
@@ -196,7 +196,7 @@ return {
             j_nic_invertedspearofheaven = {
                 name = "Inverted Spear of Heaven",
                 text = {
-                    {"When {C:attention}Blind{} is selected, destroy Adjacent",
+                    {"When {C:attention}Blind{} is selected, destroy adjacent",
                     "Jokers and gain {X:mult,C:white}X0.5{} Mult for each",
                     "{C:inactive,s:0.8}This also includes Enternals",
                     "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"},
@@ -455,7 +455,7 @@ return {
                 text = {
                     "All {C:attention}Enhanced {C:hearts}Heart{} cards ",
                     "in your {C:attention}full deck{} changes",
-                    "{C:attention}Enhancment{} after played",
+                    "{C:attention}Enhancment{} after scoring",
                     "{C:inactive,s:0.8,E:1}Song By: darkbluecat",
                 }
             },
