@@ -5,6 +5,13 @@ SMODS.Atlas{ -- Jokers
     py = 95,
 }
 
+SMODS.Atlas{ -- Ijiraq Jokers
+    key = "nicjokersijiraq",
+    path = "nicjokersijiraq.png",
+    px = 71,
+    py = 95,
+}
+
 SMODS.Atlas{ -- Phases
     key = "phases",
     path = "phases.png",

@@ -116,12 +116,11 @@ return {
             j_nic_humantorch = {
                 name = "Human Torch",
                 text = {
-                    {"All played {C:attention}Four of a Kind{} with exactly",
-                    "{C:attention}4{} cards, Upgrades {C:attention}Four of a Kind{} by {C:attention}#1#",
-                    "{C:attention}levels{} and destroy a {C:attention}random played card"},
-                    {"If {C:attention}last played hand{} of round",
-                    "has the same conditions above,",
-                    "increase the {C:attention}level{} by {C:attention}#2#"},
+                    "If {C:attention}first played{} hand is a",
+                    "{C:attention}Four of a Kind{} with exactly {C:attention}4",
+                    "cards, level up the {C:attention}hand{} by {C:attention}#1#{},",
+                    "increase the amount by {C:attention}#2#{}, and",
+                    "destroy a {C:attention}random played card",
                 }
             },
             j_nic_invisiblewoman = {
@@ -130,7 +129,6 @@ return {
                     "If {C:attention}first played{} hand is a",
                     "{C:attention}Four of a Kind{} with exactly {C:attention}4",
                     "cards, turn all cards into glass",
-                    "{C:inactive,s:0.8}Glass cards have a higher chance to break",
                 }
             },
             j_nic_thething = {
@@ -148,11 +146,9 @@ return {
             j_nic_misterfantastic = {
                 name = "Mister Fantastic",
                 text = {
-                    {"All {C:attention}played hands{} with exactly {C:attention}4",
+                    "All {C:attention}played hands{} with exactly {C:attention}4",
                     "cards are considered {C:attention}Four of a Kind",
-                    "and the {C:attention}cards{} will count when played"},
-                    {"Every {C:blue}Fantastic{} Joker {C:attention}played hands",
-                    "condition can be {C:attention}played whenever"},
+                    "and the {C:attention}cards{} will count when played",
                 }
             },
             j_nic_incognito = {
@@ -405,7 +401,7 @@ return {
                 name = "Spoken For Teto",
                 text = {
                     "Each {C:inc_teto}Teto{} themed",
-                    "{C:attention}card{} gives {X:red,C:white} X#1# {} Mult ",
+                    "{C:attention}Joker{} gives {X:red,C:white} X#1# {} Mult ",
                     "{C:inactive,s:0.8,E:1}Song By: FLAVOR FOLEY",
                 }
             },
@@ -648,6 +644,8 @@ return {
         v_dictionary={
             nic_active = "Active!",
             nic_inactive = "Inactive!",
+            nic_moneyactive = "Success!",
+            nic_moneyinactive = "Working...",
             nic_tetoactive = "Mesmerized!",
             nic_tetoinactive = "No Luck! No Hope!",
         },

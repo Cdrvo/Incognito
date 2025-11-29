@@ -117,21 +117,20 @@ SMODS.Joker{ -- Button
     rarity = 1,
     cost = 3,
     pos = {x = 2, y = 0 },
-    config = { extra = { xmult = 0.5, min = 1, max = 100, odds = 1 } },
+    config = { extra = { xmult = 0.5, odds = 100 } },
 
     loc_vars = function(self, info_queue, card)
-        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.min, card.ability.extra.max) 
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds) 
         return {vars = {new_numerator, new_denominator, card.ability.extra.xmult}}
     end,
     
     calculate = function(self, card, context)
         if context.key_press_space or (context.cry_press and card.states.hover.is == true) then
-            if SMODS.pseudorandom_probability(card, ('j_nic_button'), card.ability.extra.min, card.ability.extra.max) then
+            if SMODS.pseudorandom_probability(card, ('j_nic_button'),  1, card.ability.extra.odds) then
                 card:start_dissolve({G.C.RED})
                 card:juice_up(10, 10)
                 return { play_sound("nic_explosion"), message = "BOOM!", colour = G.C.RED }
             else
-                card.ability.extra.odds = pseudorandom('j_nic_buttonodds', 1, 5)
                 card.ability.extra.xmult = (card.ability.extra.xmult) + 0.05
                 card:juice_up(0.5, 0.5)
                 return { play_sound("nic_click") }
@@ -337,12 +336,14 @@ SMODS.Joker{ -- Dalgona Circle
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
             if card.ability.extra.success == 1 then 
+                card.ability.extra.success = 0
                 card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
                 return {
                     message = "SUCCESS!",
                     colour = G.C.MONEY
                 }
             else
+                card.ability.extra.success = 0
                 if card.ability.extra.cookie - card.ability.extra.cookie_loss <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     return {
@@ -395,12 +396,14 @@ SMODS.Joker{ -- Dalgona Triangle
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
             if card.ability.extra.success == 1 then 
+                card.ability.extra.success = 0
                 card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
                 return {
                     message = "SUCCESS!",
                     colour = G.C.MONEY
                 }
             else
+                card.ability.extra.success = 0
                 if card.ability.extra.cookie - card.ability.extra.cookie_loss <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     return {
@@ -453,12 +456,14 @@ SMODS.Joker{ -- Dalgona Star
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
             if card.ability.extra.success == 1 then 
+                card.ability.extra.success = 0
                 card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                 return {
                     message = "SUCCESS!",
                     colour = G.C.MONEY
                 }
             else
+                card.ability.extra.success = 0
                 if card.ability.extra.cookie - card.ability.extra.cookie_loss <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     return {
@@ -511,12 +516,14 @@ SMODS.Joker{ -- Dalgona Umbrella
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
             if card.ability.extra.success == 1 then 
+                card.ability.extra.success = 0
                 card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                 return {
                     message = "SUCCESS!",
                     colour = G.C.MONEY
                 }
             else
+                card.ability.extra.success = 0
                 if card.ability.extra.cookie - card.ability.extra.cookie_loss <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     return {
@@ -557,35 +564,31 @@ SMODS.Joker{ -- Human Torch
     end,
     
     calculate = function(self, card, context)
+        if context.setting_blind and not context.blueprint then
+            local eval = function(card) return G.GAME.current_round.hands_played == 0 and not card.REMOVED end
+            juice_card_until(card, eval, true)
+        end
+
         if context.before and not context.blueprint then 
             card.ability.extra.randomizer = pseudorandom('nic_humantorch', 1, 4)
         end
 
-        if context.cardarea == G.play and not context.blueprint and context.destroy_card == context.full_hand[card.ability.extra.randomizer] and #context.full_hand == 4 then
+        if context.cardarea == G.play and not context.blueprint and context.destroy_card == context.full_hand[card.ability.extra.randomizer] and G.GAME.current_round.hands_played == 0 and #context.full_hand == 4 then
             if context.scoring_name == "Four of a Kind" then
                 return {
                     remove = true
                 }
             end
         end
+
         if context.before and context.main_eval then
-            local eval = function(card) return G.GAME.current_round.hands_left == 1 and not card.REMOVED end
-            juice_card_until(card, eval, true)
-            if context.scoring_name == "Four of a Kind" and #context.full_hand == 4 then
-                if (G.GAME.current_round.hands_left == 0 or next(SMODS.find_card("j_nic_misterfantastic"))) then 
-                    card.ability.extra.levels = card.ability.extra.levels + card.ability.extra.levels_gain
-                    return {
-                        level_up = card.ability.extra.levels, level_up_hand = "Four of a Kind", 
-                        message = "TIME TO LIGHT IT UP",
-                        colour = G.C.BLUE
-                    }
-                else
-                    return {
-                        level_up = card.ability.extra.levels, level_up_hand = "Four of a Kind", 
-                        message = "FLAME ON",
-                        colour = G.C.BLUE,
-                    }
-                end
+            if context.scoring_name == "Four of a Kind" and G.GAME.current_round.hands_played == 0 and #context.full_hand == 4 then
+                card.ability.extra.levels = card.ability.extra.levels + card.ability.extra.levels_gain
+                return {
+                    level_up = card.ability.extra.levels, level_up_hand = "Four of a Kind", 
+                    message = "FLAME ON",
+                    colour = G.C.BLUE,
+                }
             end
         end
     end
@@ -614,15 +617,15 @@ SMODS.Joker{ --  Invisible Woman
             juice_card_until(card, eval, true)
         end
 
-        if context.mod_probability and not context.blueprint and context.identifier == "glass" then
+        --[[if context.mod_probability and not context.blueprint and context.identifier == "glass" then
 			return {
 				denominator = 2
 			}
-        end
+        end]]
 
         if context.before and context.main_eval and not context.blueprint then
             if context.scoring_name == "Four of a Kind" and #context.full_hand == 4 and #context.full_hand == 4 then
-                if G.GAME.current_round.hands_played == 0 or next(SMODS.find_card("j_nic_misterfantastic")) then 
+                if G.GAME.current_round.hands_played == 0 then 
                     for _, other_card in ipairs(context.scoring_hand) do
                         other_card:set_ability('m_glass', nil, true)
                         G.E_MANAGER:add_event(Event({
@@ -687,7 +690,7 @@ SMODS.Joker{ -- The Thing
                 colour = G.C.BLUE
             }
         end
-        if context.before and context.scoring_name == "Four of a Kind" and (G.GAME.current_round.hands_played == 0 or next(SMODS.find_card("j_nic_misterfantastic"))) and #context.full_hand == 4 and not context.blueprint then
+        if context.before and context.scoring_name == "Four of a Kind" and G.GAME.current_round.hands_played == 0 and #context.full_hand == 4 and not context.blueprint then
             card.ability.extra.counter = card.ability.extra.counter + card.ability.extra.counter_gain
             return {
                 message = "CLOBBERIN' TIME",
@@ -714,7 +717,6 @@ SMODS.Joker{ -- Mister Fantastic
                 add_to_hand = true
             }
         end
-
         if context.scoring_name and not context.blueprint and #context.full_hand == 4 then
             if context.evaluate_poker_hand then
                 return {
@@ -961,6 +963,10 @@ SMODS.Joker{ -- Ratio Technique
     end,
 
     calculate = function(self, card, context)
+        if context.setting_blind and not context.blueprint then
+            local eval = function(card) return G.GAME.current_round.hands_played == 0 and not card.REMOVED end
+            juice_card_until(card, eval, true)
+        end
         if not context.blueprint then 
             if ((((#G.hand.cards - #G.hand.highlighted ) * (0.70)) * 10) % 10 ) <= 4 then 
                 card.ability.extra.ratio = math.floor((#G.hand.cards - #G.hand.highlighted ) * (0.70))
@@ -1023,7 +1029,7 @@ SMODS.Joker{ -- Inverted Spear of Heaven
     rarity = 3,
     cost = 8,
     pos = {x = 9, y = 1},
-    config = { extra = { xmult = 1 } },
+    config = { extra = { xmult = 1, bossblind = 0 } },
 
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult } }
@@ -1073,6 +1079,7 @@ SMODS.Joker{ -- Inverted Spear of Heaven
 
             if G.GAME.blind.boss then
                 if my_pos and G.jokers.cards[my_pos - 1] and my_pos and G.jokers.cards[my_pos + 1] then
+                    card.ability.extra.bossblind = 1
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             G.GAME.blind:disable()
@@ -1091,6 +1098,12 @@ SMODS.Joker{ -- Inverted Spear of Heaven
                     }))
                     return { message = "THIS IS WAR", colour = HEX("4a157d") }
                 end
+            end
+        end
+
+        if context.end_of_round and not context.blueprint then
+            if G.GAME.blind.boss then
+                card.ability.extra.bossblind = 0
             end
         end
 
@@ -1329,10 +1342,6 @@ SMODS.Joker { -- Scenario
                 }
             else
                 card.ability.extra.dollars = 0
-                return {
-                    message = "FAILED!",
-                    colour = G.C.RED
-                }
             end
         end
     end

@@ -8,6 +8,10 @@ if Incognito.config.scrapped_things then
 	SMODS.load_file("src/scrapped/scrapped.lua")()
 end
 
+if JokerDisplay then
+    SMODS.load_file("src/crossmod/jokerdisplay.lua")()
+end
+
 assert(SMODS.load_file("src/assets.lua"))()
 assert(SMODS.load_file("src/blinds.lua"))()
 assert(SMODS.load_file("src/boosters.lua"))()

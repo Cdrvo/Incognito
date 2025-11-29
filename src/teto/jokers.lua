@@ -281,8 +281,7 @@ SMODS.Joker{ -- Spoken For Teto
     end, 
 
     calculate = function(self, card, context)
-        if (context.other_consumeable and context.other_consumeable.config.center_key == "c_nic_tetotarot") or 
-        (context.other_joker and (context.other_joker.config.center.rarity == "nic_teto" or context.other_joker.ability.nic_tetosticker)) then
+        if (context.other_joker and (context.other_joker.config.center.rarity == "nic_teto" or context.other_joker.ability.nic_tetosticker)) then
             return {
                 xmult = card.ability.extra.xmult,
                 colour = HEX("e15d73")
@@ -427,10 +426,13 @@ SMODS.Joker{ -- Spamteto
         return card.ability.extra.dollars_final
     end,
 
+    update = function(self, card)
+        card.ability.extra.dollars_final = math.floor(G.GAME.dollars * (card.ability.extra.dollars/100))
+    end,
+
     calculate = function(self, card, context)
         if context.setting_blind and not context.blueprint then
             card.ability.extra.uses = 1
-            card.ability.extra.dollars_final = 0
         end
 
         if context.key_press_f1 then
@@ -467,7 +469,6 @@ SMODS.Joker{ -- Spamteto
         end
 
         if context.end_of_round and context.main_eval and not context.blueprint then
-            card.ability.extra.dollars_final = card.ability.extra.dollars_final + math.floor(G.GAME.dollars * (card.ability.extra.dollars/100))
             card.ability.extra.uses = 0
             return {
                 message = ('[+$' .. card.ability.extra.dollars_final .. ']'),
