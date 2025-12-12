@@ -1,5 +1,3 @@
--- Teto
-
 SMODS.Joker{ -- Kasane Jokto
     key = "kasanejokto",
     blueprint_compat = true,
@@ -471,7 +469,7 @@ SMODS.Joker{ -- Spamteto
         if context.end_of_round and context.main_eval and not context.blueprint then
             card.ability.extra.uses = 0
             return {
-                message = ('[+$' .. card.ability.extra.dollars_final .. ']'),
+                message = ('[$' .. card.ability.extra.dollars_final .. ']'),
                 colour = G.C.MONEY
             }
         end

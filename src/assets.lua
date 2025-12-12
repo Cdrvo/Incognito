@@ -12,13 +12,6 @@ SMODS.Atlas{ -- Ijiraq Jokers
     py = 95,
 }
 
-SMODS.Atlas{ -- Phases
-    key = "phases",
-    path = "phases.png",
-    px = 71,
-    py = 95,
-}
-
 SMODS.Atlas{ -- Teto Jokers
     key = "nictetojokers",
     path = "nictetojokers.png",
@@ -26,9 +19,30 @@ SMODS.Atlas{ -- Teto Jokers
     py = 95,
 }
 
+SMODS.Atlas{ -- Plant Jokers
+    key = "nicpvzjokers",
+    path = "nicpvzjokers.png",
+    px = 71,
+    py = 95,
+}
+
+SMODS.Atlas{ -- Partners
+    key = "nicpartners",
+    path = "nicpartners.png",
+    px = 46,
+    py = 58,
+}
+
 SMODS.Atlas{ -- Tarots
     key = "nictarots",
     path = "nictarots.png",
+    px = 71,
+    py = 95,
+}
+
+SMODS.Atlas{ -- Phases
+    key = "phases",
+    path = "phases.png",
     px = 71,
     py = 95,
 }
@@ -79,9 +93,24 @@ SMODS.Atlas { -- Modicon
     pitch = 1,
 }]]
 
+SMODS.Sound{ -- Cherry Bomb
+    key = "cherrybomb",
+    path = "cherrybomb.ogg",
+}
+
+SMODS.Sound{ -- Chomper
+    key = "chomper",
+    path = "chomper.ogg",
+}
+
 SMODS.Sound{ -- Click
     key = "click",
     path = "click.ogg",
+}
+
+SMODS.Sound{ -- Doom-shroom
+    key = "doomshroom",
+    path = "doomshroom.ogg",
 }
 
 SMODS.Sound{ -- Dripstone
@@ -104,6 +133,11 @@ SMODS.Sound{ -- Gambling
     path = "gambling.ogg",
 }
 
+SMODS.Sound{ -- Grave Buster
+    key = "gravebuster",
+    path = "gravebuster.ogg",
+}
+
 SMODS.Sound{ -- Machinedramon
     key = "machinedramon",
     path = "machinedramon.ogg",
@@ -117,6 +151,11 @@ SMODS.Sound{ -- Metal Gear Solid Alert
 SMODS.Sound{ -- Neigh
     key = "neigh",
     path = "neigh.ogg",
+}
+
+SMODS.Sound{ -- Potato Mine
+    key = "potatomine",
+    path = "potatomine.ogg",
 }
 
 SMODS.Sound{ -- Spamtonf1

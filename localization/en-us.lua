@@ -157,7 +157,7 @@ return {
                     {"This Joker gains {X:mult,C:white} X#3# {} Mult when a",
                     "non {C:spades}Spade{} card is destroyed"},
                     {"Each non {C:spades}Spade{} card held in hand",
-                    "have a {C:green}#1# in #2#{} chance to be destroyed",
+                    "has a {C:green}#1# in #2#{} chance to be destroyed",
                     "{C:spades}Spade{} cards held in hand gives {X:mult,C:white} X#4#{} Mult"},
                 }
             },
@@ -315,7 +315,7 @@ return {
                     "{C:dark_edition}Negative {C:spades}Spade{} card is destroyed",
                     "{C:inactive}(Currently {C:attention}+#3#{C:inactive} Handsize)",},
                     {"Each {C:spades}Spade{} card held in hand",
-                    "have a {C:green}#1# in #2#{} chance to be {C:dark_edition}Negative",
+                    "has a {C:green}#1# in #2#{} chance to be {C:dark_edition}Negative",
                     "{C:spades}Spade{} cards get destroyed when played"},
                 }
             },
@@ -427,7 +427,7 @@ return {
             j_nic_spamteto = {
                 name = "[Spamteto]",
                 text = {
-                    "Earn {X:money,C:white}[ +$#1#% ]{} of current",
+                    "Earn {X:money,C:white}[ $#1#% ]{} of current",
                     "cash at end of round",
                     "{C:inactive}(Cash out {C:money}$#2#{C:inactive})",
                     "{C:inactive,s:0.8} [Press F1 For] HELP",
@@ -473,6 +473,129 @@ return {
                 }
             },
 
+            -- Plants
+
+            j_nic_peashooter = {
+                name = "Peashooter",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                }
+            },
+            j_nic_sunflower = {
+                name = "Sunflower",
+                text = {
+                    "Earn {C:money}$#1#{} for",
+                    "each played hand",
+                }
+            },
+            j_nic_cherrybomb = {
+                name = "Cherry Bomb",
+                text = {
+                    "Destroys up to",
+                    "{C:attention}#1#{} selected cards",
+                    "{C:red,E:2}self destructs",
+                }
+            },
+            j_nic_wallnut = {
+                name = "Wall-nut",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "Gain {C:blue}+#1#{} Hand or {C:red}+#2#{} Discard"
+                }
+            },
+            j_nic_potatomine = {
+                name = "Potato Mine",
+                text = {
+                    "After {C:attention}#3#{C:inactive} [#2#]{} hands,",
+                    "destroys up to",
+                    "{C:attention}#1#{} selected cards",
+                    "{C:red,E:2}self destructs",
+                }
+            },
+            j_nic_snowpea = {
+                name = "Snow Pea",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "{C:blue}+#2#{} Hand",
+                }
+            },
+            j_nic_chomper = {
+                name = "Chomper",
+                text = {
+                    "Destroy {C:attention}#1#{} selected",
+                    "card and gain {C:mult}+#5#{} Mult",
+                    "every {C:attention}#3#{C:inactive} [#2#]{} hands",
+                    "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult)",
+                }
+            },
+            j_nic_repeater = {
+                name = "Repeater",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "{C:attention}twice",
+                }
+            },
+            j_nic_puffshroom = {
+                name = "Puff-shroom",
+                text = {
+                    "{C:chips}+#1#{} Chips on {C:attention}final",
+                    "{C:attention}hand{} of round"
+                }
+            },
+            j_nic_sunshroom = {
+                name = "Sun-shroom",
+                text = {
+                    "Earn {C:money}$#3#{} for",
+                    "each played hand,",
+                    "after {C:attention}#2#{C:inactive} [#1#]{} hands,",
+                    "double the {C:money}cash{} earn",
+                }
+            },
+            j_nic_fumeshroom = {
+                name = "Fume-shroom",
+                text = {
+                    "",
+                }
+            },
+            j_nic_gravebuster = {
+                name = "Grave Buster",
+                text = {
+                    "Destroys up to {C:attention}#1#{} selected",
+                    "{C:attention}Stone{} cards, each card",
+                    "adds {C:attention}#2#{} random {C:attention}Enhanced",
+                    "{C:attention}cards{} to your hand",
+                }
+            },
+            j_nic_hypnoshroom = {
+                name = "Hypno-shroom",
+                text = {
+                    "",
+                }
+            },
+            j_nic_scaredyshroom = {
+                name = "Scaredy-shroom",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "However on {C:attention}final",
+                    "{C:attention}hand{} gain {C:blue}+#2#{} Hand",
+                    "{C:inactive,s:0.8}only once",
+                }
+            },
+            j_nic_iceshroom = {
+                name = "Ice-shroom",
+                text = {
+                    "",
+                }
+            },
+            j_nic_doomshroom = {
+                name = "Doom-shroom",
+                text = {
+                    "Destroy {C:attention}all cards",
+                    "held in hand",
+                    "{C:red,E:2}self destructs",
+                }
+            },
+
             -- Scrapped
 
             j_nic_overflow = {
@@ -502,7 +625,41 @@ return {
                 }
             },
         },
-        Other={
+        Partner = {
+            pnr_nic_incognito = {
+                name = "Incognito",
+                text = {
+                    "Each {C:spades}Spade{} cards held",
+                    "in hand has a {C:green}#1# in #2#",
+                    "chance to give {C:mult}+#3#{} Mult",
+                }
+            },
+            pnr_nic_invert = {
+                name = "Invert",
+                text = {
+                    "Each played hand, has",
+                    "a {C:green}#1# in #2#{} chance to",
+                    "increase handsize by {C:attention}#4#",
+                    "{C:inactive}(Currently {C:attention}+#3#{C:inactive} Handsize)",
+                }
+            },
+            pnr_nic_pear = {
+                name = "Pear",
+                text = {
+                    "For every {C:attention}#2#{C:inactive} [#3#]{} played",
+                    "{C:attention}Pair{}, level up by {C:attention}#1#{} level",
+                }
+            },
+            pnr_nic_pearto = {
+                name = "Pearto",
+                text = {
+                    "Played {C:attention}Pair{} has a",
+                    "{C:green}#1# in #2#{} chance to",
+                    "level up by {C:attention}#3#{} level",
+                }
+            },
+        },
+        Other = {
             nic_tetosticker = {
                 name = "Teto",
                 text = {
@@ -527,7 +684,7 @@ return {
             }
         },
         Planet={},
-        Spectral={
+        Spectral = {
             c_nic_newmoon = {
                 name = "New Moon",
                 text = {
@@ -587,7 +744,7 @@ return {
         },
         Stake={},
         Tag={},
-        Tarot={
+        Tarot = {
             c_nic_tetotarot = {
                 name = "Tetarot",
                 text = {
@@ -603,25 +760,26 @@ return {
         achievement_descriptions={},
         achievement_names={},
         blind_states={},
-        challenge_names={
+        challenge_names = {
             c_nic_incognito = "OOPS? ALL SWOONS!",
             c_nic_invert = "O0p$? @l- HAHAHA!",
             c_nic_machinedramon = "THE FUTURE WILL BE PAVED WITH METAL!",
         },
         collabs={},
-        dictionary={
+        dictionary = {
             k_nic_incognito = "Incognito",
             k_nic_teto = "Teto",
+            k_nic_plants = "Plants",
             k_nic_scrapped = "Scrapped",
             ph_nic_technoblade = "TECHNOBLADE NEVER DIES!",
         },
         high_scores={},
-        labels={
+        labels = {
             nic_tetosticker = "Teto",
         },
         poker_hand_descriptions={},
         poker_hands={},
-        quips={
+        quips = {
             -- Win
 
             nic_tetowordofthedaywin1 = {
@@ -641,7 +799,7 @@ return {
         suits_plural={},
         suits_singular={},
         tutorial={},
-        v_dictionary={
+        v_dictionary = {
             nic_active = "Active!",
             nic_inactive = "Inactive!",
             nic_moneyactive = "Success!",
@@ -649,7 +807,7 @@ return {
             nic_tetoactive = "Mesmerized!",
             nic_tetoinactive = "No Luck! No Hope!",
         },
-        v_text={
+        v_text = {
             ch_c_nic_incognito1 = { "You have {C:clubs}Clubs{}, {C:hearts}Hearts{}, {C:diamonds}Diamonds{}" },
             ch_c_nic_incognito2 = { "But you don't have any {C:spades}Spades{}" },
             ch_c_nic_incognito3 = { "Let's see how {C:spades}Incognito{} you are" },

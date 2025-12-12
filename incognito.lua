@@ -3,6 +3,7 @@ assert(SMODS.load_file("config.lua"))()
 
 assert(SMODS.load_file("src/jokers.lua"))()
 assert(SMODS.load_file("src/teto/jokers.lua"))()
+assert(SMODS.load_file("src/pvz/jokers.lua"))()
 
 if Incognito.config.scrapped_things then
 	SMODS.load_file("src/scrapped/scrapped.lua")()
@@ -10,6 +11,10 @@ end
 
 if JokerDisplay then
     SMODS.load_file("src/crossmod/jokerdisplay.lua")()
+end
+
+if next(SMODS.find_mod("partner")) then
+    SMODS.load_file("src/crossmod/partners.lua")()
 end
 
 assert(SMODS.load_file("src/assets.lua"))()
@@ -22,3 +27,4 @@ assert(SMODS.load_file("src/rarity.lua"))()
 assert(SMODS.load_file("src/stickers.lua"))()
 assert(SMODS.load_file("src/tarots.lua"))()
 assert(SMODS.load_file("src/texturedeck.lua"))()
+assert(SMODS.load_file("src/ui.lua"))()

@@ -37,11 +37,3 @@ SMODS.Booster{
         }
     end,
 }
-
-SMODS.ObjectType{
-    key = "Teto",
-    cards = {},
-	inject = function(self)
-		SMODS.ObjectType.inject(self)
-	end,
-}
