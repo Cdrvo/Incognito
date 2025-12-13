@@ -1,65 +1,48 @@
 SMODS.Atlas{ -- Jokers
     key = "nicjokers",
-    path = "nicjokers.png",
+    path = "jokers/base/nicjokers.png",
     px = 71,
     py = 95,
 }
 
 SMODS.Atlas{ -- Ijiraq Jokers
     key = "nicjokersijiraq",
-    path = "nicjokersijiraq.png",
+    path = "jokers/ijiraq/nicjokersijiraq.png",
     px = 71,
     py = 95,
 }
 
 SMODS.Atlas{ -- Teto Jokers
     key = "nictetojokers",
-    path = "nictetojokers.png",
+    path = "jokers/teto/nictetojokers.png",
     px = 71,
     py = 95,
 }
 
 SMODS.Atlas{ -- Plant Jokers
     key = "nicpvzjokers",
-    path = "nicpvzjokers.png",
+    path = "jokers/pvz/nicpvzjokers.png",
     px = 71,
     py = 95,
 }
 
-SMODS.Atlas{ -- Partners
-    key = "nicpartners",
-    path = "nicpartners.png",
-    px = 46,
-    py = 58,
-}
-
-SMODS.Atlas{ -- Tarots
-    key = "nictarots",
-    path = "nictarots.png",
-    px = 71,
-    py = 95,
-}
+-- Scrapped
 
 SMODS.Atlas{ -- Phases
-    key = "phases",
-    path = "phases.png",
-    px = 71,
-    py = 95,
-}
-
-SMODS.Atlas{ -- Sticker
-    key = "nicstickers",
-    path = "nicstickers.png",
+    key = "nicphases",
+    path = "scrapped/nicphases.png",
     px = 71,
     py = 95,
 }
 
 SMODS.Atlas{ -- Placeholder
-    key = "placeholder",
-    path = "placeholder.png",
+    key = "nicplaceholder",
+    path = "scrapped/nicplaceholder.png",
     px = 71,
     py = 95,
 }
+
+-- Others
 
 SMODS.Atlas{ -- Blinds
     key = "nicblinds",
@@ -77,40 +60,50 @@ SMODS.Atlas{ -- Boosters
     py = 96,
 }
 
-SMODS.Atlas { -- Modicon
+SMODS.Atlas { -- Icon
   key = "modicon",
   px = 32,
   py = 32,
-  path = "modicon.png" 
+  path = "nicicon.png" 
 }
+
+SMODS.Atlas{ -- Partners
+    key = "nicpartners",
+    path = "nicpartners.png",
+    px = 46,
+    py = 58,
+}
+
+SMODS.Atlas{ -- Sticker
+    key = "nicstickers",
+    path = "nicstickers.png",
+    px = 71,
+    py = 95,
+}
+
+SMODS.Atlas{ -- Tarots
+    key = "nictarots",
+    path = "nictarots.png",
+    px = 71,
+    py = 95,
+}
+
+-- Music
 
 --[[SMODS.Sound{ -- Black Knife
     key = "music_black_knife",
-    path = "black_knife.ogg",
+    path = "music/black_knife.ogg",
     select_music_track = function (self)
         return next(SMODS.find_card("j_nic_incognito")) and 1e10 or nil
     end,
     pitch = 1,
 }]]
 
-SMODS.Sound{ -- Cherry Bomb
-    key = "cherrybomb",
-    path = "cherrybomb.ogg",
-}
-
-SMODS.Sound{ -- Chomper
-    key = "chomper",
-    path = "chomper.ogg",
-}
+-- Sounds
 
 SMODS.Sound{ -- Click
     key = "click",
     path = "click.ogg",
-}
-
-SMODS.Sound{ -- Doom-shroom
-    key = "doomshroom",
-    path = "doomshroom.ogg",
 }
 
 SMODS.Sound{ -- Dripstone
@@ -133,11 +126,6 @@ SMODS.Sound{ -- Gambling
     path = "gambling.ogg",
 }
 
-SMODS.Sound{ -- Grave Buster
-    key = "gravebuster",
-    path = "gravebuster.ogg",
-}
-
 SMODS.Sound{ -- Machinedramon
     key = "machinedramon",
     path = "machinedramon.ogg",
@@ -151,11 +139,6 @@ SMODS.Sound{ -- Metal Gear Solid Alert
 SMODS.Sound{ -- Neigh
     key = "neigh",
     path = "neigh.ogg",
-}
-
-SMODS.Sound{ -- Potato Mine
-    key = "potatomine",
-    path = "potatomine.ogg",
 }
 
 SMODS.Sound{ -- Spamtonf1
@@ -191,4 +174,31 @@ SMODS.Sound{ -- XP Level Up
 SMODS.Sound{ -- XP Orb
     key = "xporb",
     path = "xporb.ogg",
+}
+
+-- PVZ Sounds
+
+SMODS.Sound{ -- Cherry Bomb
+    key = "cherrybomb",
+    path = "pvz/cherrybomb.ogg",
+}
+
+SMODS.Sound{ -- Chomper
+    key = "chomper",
+    path = "pvz/chomper.ogg",
+}
+
+SMODS.Sound{ -- Doom-shroom
+    key = "doomshroom",
+    path = "pvz/doomshroom.ogg",
+}
+
+SMODS.Sound{ -- Grave Buster
+    key = "gravebuster",
+    path = "pvz/gravebuster.ogg",
+}
+
+SMODS.Sound{ -- Potato Mine
+    key = "potatomine",
+    path = "pvz/potatomine.ogg",
 }

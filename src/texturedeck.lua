@@ -1,6 +1,6 @@
 local atlas_key = 'nic_atlas' -- Format: PREFIX_KEY
-local atlas_path = 'incognito_lc.png' -- Filename for the image in the asset folder
-local atlas_path_hc = 'incognito_hc.png' -- Filename for the high-contrast version of the texture, if existing
+local atlas_path = 'deck/incognito_lc.png' -- Filename for the image in the asset folder
+local atlas_path_hc = 'deck/incognito_hc.png' -- Filename for the high-contrast version of the texture, if existing
 
 local suits = {'spades'} -- Which suits to replace
 local ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'} -- Which ranks to replace

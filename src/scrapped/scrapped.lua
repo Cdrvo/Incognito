@@ -12,7 +12,7 @@ SMODS.Joker{ -- Transfer Chips
     eternal_compat = true,
     unlocked = true,
     discovered = false,
-    atlas = 'placeholder',
+    atlas = 'nicplaceholder',
     rarity = "nic_scrapped",
     cost = 20,
     pos = {x = 0, y = 0},
@@ -48,7 +48,7 @@ SMODS.Joker{ -- Reroll Infinite
     eternal_compat = true,
     unlocked = true,
     discovered = true,
-    atlas = 'placeholder',
+    atlas = 'nicplaceholder',
     rarity = "nic_scrapped",
     cost = 20,
     pos = {x = 0, y = 0},
@@ -80,7 +80,7 @@ SMODS.Joker{ -- The True Fibonacci Sequence
     eternal_compat = true,
     unlocked = true,
     discovered = true,
-    atlas = 'placeholder',
+    atlas = 'nicplaceholder',
     rarity = "nic_scrapped",
     cost = 20,
     pos = {x = 0, y = 0},
@@ -109,7 +109,7 @@ SMODS.Consumable {
     key = 'newmoon',
     set = 'Spectral',
     cost = 4,
-    atlas = 'phases',
+    atlas = 'nicphases',
     pos = {x = 0, y = 0 },
 
     loc_vars = function(self, info_queue, card)
@@ -151,7 +151,7 @@ SMODS.Consumable {
     key = 'waxingcrescent',
     set = 'Spectral',
     cost = 4,
-    atlas = 'phases',
+    atlas = 'nicphases',
     pos = {x = 1, y = 0 },
 
     loc_vars = function(self, info_queue, card)
@@ -187,7 +187,7 @@ SMODS.Consumable {
     key = 'firstquarter',
     set = 'Spectral',
     cost = 4,
-    atlas = 'phases',
+    atlas = 'nicphases',
     pos = {x = 2, y = 0 },
 
     loc_vars = function(self, info_queue, card)
@@ -223,7 +223,7 @@ SMODS.Consumable {
     key = 'waxinggibbous',
     set = 'Spectral',
     cost = 4,
-    atlas = 'phases',
+    atlas = 'nicphases',
     pos = {x = 3, y = 0 },
 
     loc_vars = function(self, info_queue, card)
@@ -259,7 +259,7 @@ SMODS.Consumable {
     key = 'fullmoon',
     set = 'Spectral',
     cost = 4,
-    atlas = 'phases',
+    atlas = 'nicphases',
     pos = {x = 0, y = 1 },
 
     loc_vars = function(self, info_queue, card)
@@ -295,7 +295,7 @@ SMODS.Consumable {
     key = 'waninggibbous',
     set = 'Spectral',
     cost = 4,
-    atlas = 'phases',
+    atlas = 'nicphases',
     pos = {x = 1, y = 1 },
 
     loc_vars = function(self, info_queue, card)
@@ -331,7 +331,7 @@ SMODS.Consumable {
     key = 'thirdquarter',
     set = 'Spectral',
     cost = 4,
-    atlas = 'phases',
+    atlas = 'nicphases',
     pos = {x = 2, y = 1 },
 
     loc_vars = function(self, info_queue, card)
@@ -367,7 +367,7 @@ SMODS.Consumable {
     key = 'waningscrescent',
     set = 'Spectral',
     cost = 4,
-    atlas = 'phases',
+    atlas = 'nicphases',
     pos = {x = 3, y = 1 },
 
     loc_vars = function(self, info_queue, card)
