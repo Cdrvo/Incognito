@@ -42,13 +42,6 @@ SMODS.Atlas{ -- Placeholder
     py = 95,
 }
 
-SMODS.Atlas{ -- Mahoraga Wheel
-    key = "mahoragawheel",
-    path = "scrapped/mahoragawheel.png",
-    px = 71,
-    py = 95,
-}
-
 -- Others
 
 SMODS.Atlas{ -- Blinds
