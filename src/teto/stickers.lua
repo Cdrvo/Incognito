@@ -7,7 +7,7 @@ SMODS.Sticker {
     config = { repetitions = 1 },
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { colours = { HEX('e15d73') }} }
+        return { vars = { } }
     end, 
 
 }

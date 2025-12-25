@@ -6,7 +6,8 @@ SMODS.Consumable {
     pos = {x = 0, y = 0 },
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { colours = { HEX('e15d73') }} }
+        info_queue[#info_queue + 1] = { key = "nic_tetosticker", set = "Other" }
+        return { vars = { } }
     end, 
 
     use = function(self, card, area, copier)
@@ -16,6 +17,7 @@ SMODS.Consumable {
                     G.jokers.highlighted[1]:juice_up()
                     G.jokers.highlighted[1]:set_ability(G.P_CENTERS.j_nic_pear)
                     play_sound('gold_seal', 1.2, 0.4)
+                    G.jokers:unhighlight_all()
                     return true
                 end
             }))
@@ -27,6 +29,7 @@ SMODS.Consumable {
                     G.jokers.highlighted[1]:juice_up()
                     G.jokers.highlighted[1]:add_sticker("nic_tetosticker", true)
                     play_sound('gold_seal', 1.2, 0.4)
+                    G.jokers:unhighlight_all()
                     return true 
                 end 
             }))
@@ -34,6 +37,6 @@ SMODS.Consumable {
     end,
 
     can_use = function (self, card) 
-        return #G.jokers.highlighted > 0 and G.jokers.highlighted[1].config.center.rarity ~= "nic_teto" and not G.jokers.cards[1].ability.nic_tetosticker
+        return #G.jokers.highlighted > 0 and #G.jokers.highlighted == 1  and G.jokers.highlighted[1].config.center.rarity ~= "nic_teto" and not G.jokers.highlighted[1].ability.nic_tetosticker
     end,
 }

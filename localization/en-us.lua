@@ -15,8 +15,9 @@ return {
             j_nic_technoblade = {
                 name = "Technoblade",
                 text = {
-                    "Prevents Death {C:attention}#2#{C:inactive} [#1#]{} times if chips",
-                    "scored are at least {C:attention}#3#%{} of required chips ",
+                    "Prevents Death {C:attention}#2#{C:inactive} [#1#]{} times",
+                    "if chips scored are at least",
+                    "{C:attention}#3#%{} of required chips",
                     "{C:inactive,s:0.8}Increases % by 25% every death",
                     "{s:1.1,C:red,E:2}self destructs when [0]",
                 }
@@ -27,11 +28,14 @@ return {
                     "{C:black,X:white,s:0.6}MEGA{s:0.6}/{C:black,X:white,s:0.6}VIRUS{s:0.6}/{C:black,X:white,s:0.6}MACHINE"
                 },
                 text = {
-                    {"End of round, all non {C:attention}Enhanced cards{}",
-                    "held in hand turn into {C:attention}Steel{} cards"},
-                    {"Scored {C:attention}Steel{} cards get destroyed",
-                    "and gains {C:mult}+15{} Mult and {X:mult,C:white}X0.5{} Mult",
-                    "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult and {X:mult,C:white} X#2# {C:inactive} Mult)"},
+                    {"{X:blue,C:white,s:0.8}When`````Attacking",
+                    "{C:attention}Steel Cards{} get destroyed,",
+                    "gain {C:mult}+#3#{} Mult and {X:mult,C:white}X#4#{} Mult"},
+                    {"{X:blue,C:white,s:0.8}End`````of`````Attack",
+                    "{C:mult}+#1#{} Mult and {X:mult,C:white}X#2#{} Mult"},
+                    {"{X:blue,C:white,s:0.8}End`````of`````Your`````Turn",
+                    "non {C:attention}Enhanced Cards{} held in",
+                    "hand turn into {C:attention}Steel Cards"},
                 }
             },
             j_nic_button = {
@@ -59,7 +63,7 @@ return {
                 text = {
                     {"Scoring {C:attention}Stone{} cards turn {C:dark_edition}Negative,",
                     "Scoring {C:dark_edition}Negative {C:attention}Stone{} cards gets",
-                    "destroyed and increases {C:chips}Chips{} by {C:chips}#2#"},
+                    "destroyed and gain {C:chips}+#2#{} Chips"},
                     {"{C:chips}+#1#{} Chips for each",
                     "{C:attention}Stone{} card held in hand",
                     "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"},
@@ -373,8 +377,9 @@ return {
             j_nic_doctorkidori = {
                 name = "Doctor Kidori",
                 text = {
-                    "All played {C:attention}4s", 
-                    "changes {C:dark_edition}Edition",
+                    "If this {C:attention}Joker{} is in",
+                    "leftmost slot, all played",
+                    "{C:attention}4s{} changes {C:dark_edition}Edition",
                     "{C:inactive,s:0.8,E:1}Song By: {C:inactive,f:5,s:0.8,E:1}原口沙輔",
                     "{C:inactive,s:0.8,E:1} Hako, Sasuke Haraguchi",
                 }
@@ -400,7 +405,7 @@ return {
             j_nic_spokenforteto = { 
                 name = "Spoken For Teto",
                 text = {
-                    "Each {C:inc_teto}Teto{} themed",
+                    "Each {C:nic_teto}Teto{} themed",
                     "{C:attention}Joker{} gives {X:red,C:white} X#1# {} Mult ",
                     "{C:inactive,s:0.8,E:1}Song By: FLAVOR FOLEY",
                 }
@@ -410,7 +415,7 @@ return {
                 text = {
                     "After {C:attention}#2# Blinds{}, sell",
                     "this card to {C:attention}Create",
-                    "a random {C:inc_teto}Teto{} Joker",
+                    "a random {C:nic_teto}Teto{} Joker",
                     "{C:inactive,s:0.8}(Must have room)",
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)",
                 }
@@ -418,9 +423,9 @@ return {
             j_nic_mesmerizerteto = { 
                 name = "Mesmerizer Teto",
                 text = {
-                    "If leftmost Joker is",
-                    "a {C:inc_teto}Teto{}, retrigger it",
-                    "{C:attention}#1#{} additional times",
+                    "Copies the ability",
+                    "of leftmost {C:nic_teto}Teto",
+                    "Joker {C:attention}2{} times",
                     "{C:inactive,s:0.8,E:1}Song By: 32ki",
                 }
             },
@@ -457,8 +462,8 @@ return {
                 name = "Teto Territory",
                 text = {
                     "When {C:attention}Boss Blind{} is selected,",
-                    "a random non {C:inc_teto}Teto{} Joker", 
-                    "turns into a {C:inc_teto}Teto{} Joker",
+                    "a random non {C:nic_teto}Teto{} Joker", 
+                    "turns into a {C:nic_teto}Teto{} Joker",
                     "{C:inactive,s:0.8} Food Jokers turn into Pears",
                     "{C:inactive,s:0.8,E:1}Song By: Oxi",
                 }
@@ -466,9 +471,11 @@ return {
             j_nic_contradictionsteto = {
                 name = "Contradictions Teto",
                 text = {
-                    "All {C:attention}Enhanced {C:hearts}Heart{} cards ",
-                    "in your {C:attention}full deck{} changes",
-                    "{C:attention}Enhancment{} after scoring",
+                    "If this {C:attention}Joker{} is in",
+                    "leftmost slot, all {C:attention}Enhanced",
+                    "{C:hearts}Heart{} cards in your {C:attention}full",
+                    "{C:attention} deck{} changes {C:attention}Enhancment",
+                    "after scoring",
                     "{C:inactive,s:0.8,E:1}Song By: darkbluecat",
                 }
             },
@@ -539,7 +546,7 @@ return {
                 name = "Puff-shroom",
                 text = {
                     "{C:chips}+#1#{} Chips on {C:attention}final",
-                    "{C:attention}hand{} of round"
+                    "{C:attention}played hand{} of round"
                 }
             },
             j_nic_sunshroom = {
@@ -554,7 +561,9 @@ return {
             j_nic_fumeshroom = {
                 name = "Fume-shroom",
                 text = {
-                    "",
+                    "{C:attention}First played hand{} decreases",
+                    "Blind Requirement by {X:attention,C:white}#2#%{}",
+                    "{C:chips}+#1#{} Chips for {C:attention}other hands",
                 }
             },
             j_nic_gravebuster = {
@@ -581,7 +590,7 @@ return {
                 name = "Scaredy-shroom",
                 text = {
                     "{C:chips}+#1#{} Chips",
-                    "However on {C:attention}final",
+                    "However on {C:attention}final played",
                     "{C:attention}hand{} gain {C:blue}+#2#{} Hand",
                     "{C:inactive,s:0.8}only once",
                 }
@@ -589,13 +598,17 @@ return {
             j_nic_iceshroom = {
                 name = "Ice-shroom",
                 text = {
-                    "",
+                    "Enhances up to {C:attention}#1#",
+                    "selected cards",
+                    "into {C:attention}Glass Cards",
+                    "{C:blue}+#2#{} Hand",
                     "{C:red,E:2}self destructs",
                 }
             },
             j_nic_doomshroom = {
                 name = "Doom-shroom",
                 text = {
+                    "Instantly win {C:attention}Blind{},",
                     "Destroy {C:attention}all cards",
                     "held in hand",
                     "{C:red,E:2}self destructs",
@@ -628,6 +641,16 @@ return {
                     "by the {C:attention}Fibonacci Sequence",
                     "{C:inactive} 1, 2, 3, 5, 8, 13, 21, 34, 55... etc",
                     "{C:inactive}(Currently {X:chips,C:white} X#1# {C:inactive} Chips)",
+                }
+            },
+        },
+        nic_zengarden = {
+            c_nic_shovel = {
+                name = "Shovel",
+                text = {
+                    "Selected {C:nic_plants}Plants{} Joker",
+                    "gets {C:attention}digged up{} and gains",
+                    "original {C:attention}cost value",
                 }
             },
         },
@@ -670,7 +693,7 @@ return {
                 name = "Teto",
                 text = {
                     "This Joker is",
-                    "considered a {C:inc_teto}Teto",
+                    "considered a {C:nic_teto}Teto",
                 }
             },
             nic_moonphases = {
@@ -755,7 +778,7 @@ return {
                 name = "Tetarot",
                 text = {
                     "Gives selected Joker",
-                    "a {C:inc_teto}Teto{} Sticker",
+                    "a {C:nic_teto}Teto{} Sticker",
                     "{C:inactive,s:0.8} Food Jokers turn into Pears",
                 }
             },

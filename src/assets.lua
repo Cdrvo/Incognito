@@ -1,27 +1,36 @@
 SMODS.Atlas{ -- Jokers
     key = "nicjokers",
-    path = "jokers/base/nicjokers.png",
+    path = "nicjokers.png",
     px = 71,
     py = 95,
 }
 
 SMODS.Atlas{ -- Ijiraq Jokers
     key = "nicjokersijiraq",
-    path = "jokers/ijiraq/nicjokersijiraq.png",
+    path = "ijiraq/nicjokersijiraq.png",
     px = 71,
     py = 95,
 }
 
 SMODS.Atlas{ -- Teto Jokers
     key = "nictetojokers",
-    path = "jokers/teto/nictetojokers.png",
+    path = "teto/nictetojokers.png",
     px = 71,
     py = 95,
 }
 
+-- Plants
+
 SMODS.Atlas{ -- Plant Jokers
     key = "nicpvzjokers",
-    path = "jokers/pvz/nicpvzjokers.png",
+    path = "pvz/nicpvzjokers.png",
+    px = 71,
+    py = 95,
+}
+
+SMODS.Atlas{ -- Plant Consumables
+    key = "nicpvzconsumables",
+    path = "pvz/nicpvzconsumables.png",
     px = 71,
     py = 95,
 }
@@ -203,7 +212,17 @@ SMODS.Sound{ -- Hypno-shroom
     path = "pvz/hypnoshroom.ogg",
 }
 
+SMODS.Sound{ -- Ice-shroom
+    key = "iceshroom",
+    path = "pvz/iceshroom.ogg",
+}
+
 SMODS.Sound{ -- Potato Mine
     key = "potatomine",
     path = "pvz/potatomine.ogg",
+}
+
+SMODS.Sound{ -- Shovel
+    key = "shovel",
+    path = "pvz/shovel.ogg",
 }

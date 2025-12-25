@@ -83,12 +83,6 @@ SMODS.Joker{ -- Cherry Bomb
     end,
 
     add_to_deck = function(self, card, from_debuff)        
-        if card.cost == 1 then
-            card.ability.extra_value = -card.cost
-        else
-            card.ability.extra_value = -math.floor(card.cost/2)
-        end
-        card:set_cost()
         local eval = function(card) return not card.REMOVED end
         juice_card_until(card, eval, true)
     end
@@ -408,11 +402,11 @@ SMODS.Joker{ -- Fume-shroom
     cost = 3,
     pos = {x = 0, y = 7},
     soul_pos = {x = 2, y = 1},
-    config = { extra_slots_used = -1, extra = {} },
+    config = { extra_slots_used = -1, extra = { chips = 50, blind = 5 } },
     pools = { ["Plants"] = true },
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.blind } }
     end,
 
     in_pool = function (self, args)
@@ -420,6 +414,27 @@ SMODS.Joker{ -- Fume-shroom
             allow_duplicates = next(SMODS.find_card("j_nic_fumeshroom"))
         }
     end,
+
+    calculate = function(self, card, context)
+        if context.before then 
+            if G.GAME.current_round.hands_played == 0 then
+                return {
+                    message = "PIERCE", 
+                    colour = G.C.FILTER
+                }
+            end
+        end
+        if context.joker_main then
+            if G.GAME.current_round.hands_played == 0 then
+                G.GAME.blind.chips = math.floor(to_number(G.GAME.blind.chips) * (1 - (card.ability.extra.blind / 100)))
+                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            else
+                return {
+                    chips = card.ability.extra.chips,
+                }
+            end
+        end
+    end
 }
 
 SMODS.Joker{ -- Grave Buster
@@ -462,6 +477,12 @@ SMODS.Joker{ -- Hypno-shroom
 
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.max_highlighted, card.ability.extra.amount } }
+    end,
+
+    in_pool = function (self, args)
+        return true, {
+            allow_duplicates = next(SMODS.find_card("j_nic_hypnoshroom"))
+        }
     end,
 }
 
@@ -522,12 +543,17 @@ SMODS.Joker{ -- Ice-shroom
     cost = 3,
     pos = {x = 0, y = 7},
     soul_pos = {x = 6, y = 1},
-    config = { extra_slots_used = -1, extra = { } },
+    config = { extra_slots_used = -1, extra = { max_highlighted = 5, hand = 1 } },
     pools = { ["Plants"] = true },
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { } }
+        return { vars = { card.ability.extra.max_highlighted, card.ability.extra.hand } }
     end,
+
+    add_to_deck = function(self, card, from_debuff)        
+        local eval = function(card) return not card.REMOVED end
+        juice_card_until(card, eval, true)
+    end
 }
 
 SMODS.Joker{ -- Doom-shroom
@@ -548,7 +574,7 @@ SMODS.Joker{ -- Doom-shroom
         return { vars = { } }
     end,
     
-    add_to_deck = function(self, card, from_debuff)        
+    add_to_deck = function(self, card, from_debuff)    
         local eval = function(card) return not card.REMOVED end
         juice_card_until(card, eval, true)
     end
@@ -561,7 +587,14 @@ function Card:set_cost()
         self.cost = 0 
     end
     if (self.config.center.rarity == "nic_plants") then
-        self.sell_cost = 0 
+        self.sell_cost = 0
     end
     self.sell_cost_label = self.facing == 'back' and '?' or self.sell_cost
+end
+
+local oldstartrun = Game.start_run
+function Game:start_run(args)
+    local g = oldstartrun(self, args)
+    self.jokers.config.highlighted_limit = 2
+    return g
 end

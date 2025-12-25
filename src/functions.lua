@@ -138,9 +138,25 @@ end
 
 SMODS.current_mod.optional_features = { cardareas = {}, retrigger_joker = true, post_trigger = true }
 
+-- Gradient
+
+--[[SMODS.Gradient{
+    key = 'rainbow',
+    colours = {
+        HEX('e50000'),
+        HEX('ff8d00'),
+        HEX('ffee00'),
+        HEX('028121'),
+        HEX('004cff'),
+        HEX('770088')
+    },
+}]]
+
 -- Text Colours
 
 loc_colour('red')
-G.ARGS.LOC_COLOURS['inc_teto'] = HEX('e15d73')
+G.ARGS.LOC_COLOURS['nic_teto'] = HEX('e15d73')
+G.ARGS.LOC_COLOURS['nic_plants'] = HEX('33cc00')
+--G.ARGS.LOC_COLOURS['nic_rainbow'] = SMODS.Gradients['rainbow']
 
 -- card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "71!", colour = HEX("d0d0d0")})

@@ -59,11 +59,11 @@ SMODS.Joker{ -- Machinedramon
     rarity = 3,
     cost = 8,
     pos = {x = 1, y = 0},
-    config = { extra = { mult = 0, xmult = 1 } },
+    config = { extra = { mult = 0, xmult = 1, mult_gain = 15, xmult_gain = 0.5 } },
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
-        return { vars = { card.ability.extra.mult, card.ability.extra.xmult } }
+        return { vars = { card.ability.extra.mult, card.ability.extra.xmult, card.ability.extra.mult_gain, card.ability.extra.xmult_gain } }
     end,
 
     calculate = function(self, card, context)
@@ -77,11 +77,18 @@ SMODS.Joker{ -- Machinedramon
                 if not next(SMODS.get_enhancements(other_card)) and not other_card.debuff then
                     G.E_MANAGER:add_event(Event({
                         trigger = 'after',
-                        delay = 0.5,
+                        delay = 0.1,
                         func = function()
                             other_card:juice_up()
                             other_card:set_ability('m_steel')
                             play_sound("nic_machinedramon")
+                            return true
+                        end
+                    }))
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.5,
+                        func = function()
                             return true
                         end
                     }))
@@ -92,8 +99,8 @@ SMODS.Joker{ -- Machinedramon
         if context.individual and context.cardarea == G.play and not context.blueprint then
             if SMODS.has_enhancement(context.other_card, 'm_steel') then
                 context.other_card.should_destroy = true
-                card.ability.extra.mult = (card.ability.extra.mult) + 15
-                card.ability.extra.xmult = (card.ability.extra.xmult) + 0.5
+                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                 return { message = "ASSEMBLE!", colour = G.C.BLACK }
             end
         end
@@ -999,7 +1006,7 @@ SMODS.Joker{ -- Ratio Technique
             return { remove = true }
         end
 
-        if context.individual and context.cardarea == G.hand and context.other_card == G.hand.cards[card.ability.extra.ratio] and not context.end_of_round and not context.blueprint then
+        if context.individual and context.cardarea == G.hand and (context.other_card) == G.hand.cards[card.ability.extra.ratio] and not context.end_of_round and not context.blueprint then
             if G.GAME.current_round.hands_played == 0 then
                 local other_card = context.other_card
                 context.other_card.should_destroy = true
@@ -1136,7 +1143,7 @@ SMODS.Joker{ -- Cyan
         if context.first_hand_drawn then
             if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
                 G.GAME.blind.chips = math.floor(to_number(G.GAME.blind.chips) * card.ability.extra.blind)
-                G.GAME.blind.chip_text = G.GAME.blind.chips
+                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
                 G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                 G.E_MANAGER:add_event(Event({
                     func = function()

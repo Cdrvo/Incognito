@@ -175,15 +175,18 @@ SMODS.Joker{ -- Doctor Kidori
 
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:get_id() == 4 then
-            local other_card = context.other_card
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    other_card:juice_up()
-                    play_sound('tarot1')
-                    other_card:set_edition(SMODS.poll_edition { guaranteed = true }, nil, true)
-                    return true
-                end
-            }))
+            if G.jokers.cards[1] == card then
+                local other_card = context.other_card
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        card:juice_up()
+                        other_card:juice_up()
+                        play_sound('tarot1')
+                        other_card:set_edition(SMODS.poll_edition { guaranteed = true }, nil, true)
+                        return true
+                    end
+                }))
+            end
         end
     end
 }
@@ -357,7 +360,7 @@ SMODS.Joker{ -- Mesmerizer Teto
     rarity = "nic_teto",
     cost = 8,
     pos = {x = 4, y = 1},
-    config = { extra = { repetitions = 2 } },
+    config = { extra = { } },
     pools = { ["Teto"] = true },
 
     loc_vars = function(self, info_queue, card)
@@ -383,22 +386,22 @@ SMODS.Joker{ -- Mesmerizer Teto
                 vars = { card.ability.extra.repetitions },
                 main_end = main_end 
             }
-        else
-            return { 
-                vars = { card.ability.extra.repetitions } 
-            }
         end
     end,
 
     calculate = function(self, card, context)
-    	if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
-            if context.other_card == G.jokers.cards[1] and (G.jokers.cards[1].config.center.rarity == "nic_teto" or G.jokers.cards[1].ability.nic_tetosticker) and G.jokers.cards[1].config.center.blueprint_compat then
-                return {
-                    message = "MESMERIZED!",
-                    colour = HEX("e15d73"),
-                    repetitions = card.ability.extra.repetitions,
-                }
+        if G.jokers.cards[1] and G.jokers.cards[1] ~= card and
+        (G.jokers.cards[1].config.center.rarity == "nic_teto" or G.jokers.cards[1].ability.nic_tetosticker) and G.jokers.cards[1].config.center.blueprint_compat then
+            local ret1 = SMODS.blueprint_effect(card, G.jokers.cards[1], context)
+            local ret2 = SMODS.blueprint_effect(card, G.jokers.cards[1], context)
+            local ret3 = SMODS.merge_effects(
+                { ret1 or {} },
+                { ret2 or {} }
+            )
+            if ret3 then
+                ret3.colour = HEX("e15d73")
             end
+            return ret3
         end
     end
 }
@@ -634,24 +637,26 @@ SMODS.Joker{ -- Contradictions Teto
 
     calculate = function(self, card, context)
         if context.after then
-            for i = 1, #G.playing_cards do
-                local other_card = G.playing_cards[i]
-                if next(SMODS.get_enhancements(other_card)) and (other_card:is_suit("Hearts") or other_card.base.suit == "Hearts") then
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            other_card:juice_up()
-                            play_sound('tarot1')
-                            other_card:set_ability(SMODS.poll_enhancement { guaranteed = true }, nil, true)
-                            return true
-                        end
-                    }))
-                    delay(0.1)
+            if G.jokers.cards[1] == card then
+                for i = 1, #G.playing_cards do
+                    local other_card = G.playing_cards[i]
+                    if next(SMODS.get_enhancements(other_card)) and (other_card:is_suit("Hearts") or other_card.base.suit == "Hearts") then
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                other_card:juice_up()
+                                play_sound('tarot1')
+                                other_card:set_ability(SMODS.poll_enhancement { guaranteed = true }, nil, true)
+                                return true
+                            end
+                        }))
+                        delay(0.1)
+                    end
                 end
+                return {
+                    message = "CONTRADICTIONS",
+                    colour = HEX("e15d73")
+                }
             end
-            return {
-                message = "CONTRADICTIONS",
-                colour = HEX("e15d73")
-            }
         end
     end
 }
