@@ -507,7 +507,7 @@ return {
                 name = "Wall-nut",
                 text = {
                     "When {C:attention}Blind{} is selected,",
-                    "Gain {C:blue}+#1#{} Hand or {C:red}+#2#{} Discard"
+                    "gain {C:blue}+#1#{} Hand or {C:red}+#2#{} Discard"
                 }
             },
             j_nic_potatomine = {
